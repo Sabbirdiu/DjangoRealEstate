@@ -1005,12 +1005,13 @@
             
             <div class="row">
                 <div class="agent-carousel section">
-
+                {% if realtors %}
+                    {% for realtor in realtors %}
                     <!--Agent satrt-->
                     <div class="col">
                         <div class="agent">
                             <div class="image">
-                                <a class="img" href="agent-details.html"><img src="assets/images/agent/agent-1.jpg" alt=""></a>
+                                <a class="img" href="agent-details.html"><img src="{{ realtor.photo.url }}" alt=""></a>
                                 <div class="social">
                                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -1019,103 +1020,16 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h4 class="title"><a href="agent-details.html">Donald Palmer</a></h4>
-                                <a href="#" class="phone">(756) 447 5779</a>
-                                <a href="#" class="email">info@example.com</a>
-                                <span class="properties">5 Properties</span>
+                                <h4 class="title"><a href="agent-details.html">{{ realtor.name }}</a></h4>
+                                <a href="#" class="phone">{{ realtor.phone }}</a>
+                                <a href="#" class="email">{{ realtor.email }}</a>
+                                <!-- <span class="properties">5 Properties</span> -->
                             </div>
                         </div>
                     </div>
                     <!--Agent end-->
-
-                    <!--Agent satrt-->
-                    <div class="col">
-                        <div class="agent">
-                            <div class="image">
-                                <a class="img" href="agent-details.html"><img src="assets/images/agent/agent-2.jpg" alt=""></a>
-                                <div class="social">
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h4 class="title"><a href="agent-details.html">Sean Hamilton</a></h4>
-                                <a href="#" class="phone">(756) 447 5779</a>
-                                <a href="#" class="email">info@example.com</a>
-                                <span class="properties">2 Properties</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Agent end-->
-
-                    <!--Agent satrt-->
-                    <div class="col">
-                        <div class="agent">
-                            <div class="image">
-                                <a class="img" href="agent-details.html"><img src="assets/images/agent/agent-3.jpg" alt=""></a>
-                                <div class="social">
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h4 class="title"><a href="agent-details.html">Christine Gilbert</a></h4>
-                                <a href="#" class="phone">(756) 447 5779</a>
-                                <a href="#" class="email">info@example.com</a>
-                                <span class="properties">4 Properties</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Agent end-->
-
-                    <!--Agent satrt-->
-                    <div class="col">
-                        <div class="agent">
-                            <div class="image">
-                                <a class="img" href="agent-details.html"><img src="assets/images/agent/agent-4.jpg" alt=""></a>
-                                <div class="social">
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h4 class="title"><a href="agent-details.html">Jason Patel</a></h4>
-                                <a href="#" class="phone">(756) 447 5779</a>
-                                <a href="#" class="email">info@example.com</a>
-                                <span class="properties">2 Properties</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Agent end-->
-
-                    <!--Agent satrt-->
-                    <div class="col">
-                        <div class="agent">
-                            <div class="image">
-                                <a class="img" href="agent-details.html"><img src="assets/images/agent/agent-5.jpg" alt=""></a>
-                                <div class="social">
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h4 class="title"><a href="agent-details.html">Debra Myers</a></h4>
-                                <a href="#" class="phone">(756) 447 5779</a>
-                                <a href="#" class="email">info@example.com</a>
-                                <span class="properties">3 Properties</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Agent end-->
-
+                    {% endfor %}
+                {% endif %} 
                 </div>
             </div>
         </div>
