@@ -10,7 +10,7 @@
                     <!--Logo start-->
                     <div class="col mt-10 mb-10">
                         <div class="logo">
-                            <a href="index.html"><img src="{% static 'images/logo4.jpg' %}" style="height: 65px ;width: 100px;"  alt=""></a>
+                            <a href="{% url 'home' %}"><img src="{% static 'images/logo4.jpg' %}" style="height: 65px ;width: 100px;"  alt=""></a>
                         </div>
                     </div>
                     <!--Logo end-->
@@ -19,20 +19,11 @@
                     <div class="col d-none d-lg-flex">
                         <nav class="main-menu">
                             <ul>
-                                <li class=""><a href="index.html">Home</a>
+                                <li class=""><a href="{% url 'home' %}">Home</a>
                                 </li>
-                                <li class="has-dropdown"><a href="properties-list-left-sidebar.html">Properties</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="single-properties.html">Details Properties</a></li>
-                                       
-                                    </ul>
+                                <li class=""><a href="{% url 'listings' %}">Properties</a>
                                 </li>
-                                <li class="has-dropdown"><a href="agents.html">agents</a>
-                                    <ul class="sub-menu">
-                                      
-                                       
-                                        <li><a href="agent-details.html">Agent Details</a></li>
-                                    </ul>
+                                <li class=""><a href="{% url 'agents' %}">agents</a>
                                 </li>
                                
                                 <li class="has-dropdown"><a href="news.html">News</a>
@@ -76,4 +67,4 @@
             </div>
         </div>
     </header>
-    </div>
+    

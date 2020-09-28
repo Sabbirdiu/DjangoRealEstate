@@ -4,13 +4,13 @@
 {% block content %}
     
     <!--Page Banner Section start-->
-    <div class="page-banner-section section" style="background-image: url(assets/images/bg/single-property-bg.jpg)">
+    <div class="page-banner-section section" style="background-image: url({{ listing.photo_main.url }})">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <h1 class="page-banner-title">Properties</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li class="active">Friuli-Venezia Giulia</li>
                     </ul>
                 </div>

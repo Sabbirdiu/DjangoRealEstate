@@ -10,7 +10,7 @@
                 <div class="col">
                     <h1 class="page-banner-title">Properties</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li class="active">Properties List Left Sidebar</li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                         <div class="property-item list col-md-6 col-12 mb-40">
                             <div class="property-inner">
                                 <div class="image">
-                                    <a href="single-properties.html"><img src="{{ listing.photo_main.url }}" alt=""></a>
+                                    <a href="{% url 'listing' listing.id %}"><img src="{{ listing.photo_main.url }}" alt=""></a>
                                     <ul class="property-feature">
                                         <li>
                                             <span class="area"><img src="assets/images/icons/area.png" alt="">{{ listing.sqft }} SqFt</span>
