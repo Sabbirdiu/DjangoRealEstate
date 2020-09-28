@@ -1,106 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+{% extends 'base.html' %}
+{% load static %}
 
-
-<!-- Mirrored from demo.hasthemes.com/sabbirdk-preview/sabbirdk/properties-list-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Aug 2020 08:46:27 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sabbirdk- Real Estateprofessional Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico in the root directory -->
-    <link href="assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
-    <!-- All css files are included here. -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/iconfont.min.css">
-    <link rel="stylesheet" href="assets/css/plugins.css">
-    <link rel="stylesheet" href="assets/css/helper.css">
-    <link rel="stylesheet" href="assets/css/style.css">   
-    <!-- Modernizr JS -->
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-</head>
-
-<body>
-    
-<div id="main-wrapper">
-   
-    <!--Header section start-->
-    <header class="header header-sticky">
-        <div class="header-bottom menu-center">
-            <div class="container">
-                <div class="row justify-content-between">
-                    
-                    <!--Logo start-->
-                    <div class="col mt-10 mb-10">
-                        <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo4.jpg" style="height: 65px ;width: 100px;"  alt=""></a>
-                        </div>
-                    </div>
-                    <!--Logo end-->
-                    
-                    <!--Menu start-->
-                    <div class="col d-none d-lg-flex">
-                        <nav class="main-menu">
-                            <ul>
-                                <li class=""><a href="index.html">Home</a>
-                                </li>
-                                <li class="has-dropdown"><a href="properties-list-left-sidebar.html">Properties</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="single-properties.html">Details Properties</a></li>
-                                       
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown"><a href="agents.html">agents</a>
-                                    <ul class="sub-menu">
-                                      
-                                       
-                                        <li><a href="agent-details.html">Agent Details</a></li>
-                                    </ul>
-                                </li>
-                               
-                                <li class="has-dropdown"><a href="news.html">News</a>
-                                    <ul class="sub-menu">
-                                      
-                                       
-                                        <li><a href="news-details.html">Details Left Sidebar</a></li>
-                                      
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown"><a href="#">pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="contact-us.html">Contact us</a></li>
-                                        <li><a href="login-register.html">Login & Register</a></li>
-                                        <li><a href="my-account.html">My Account</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <!--Menu end-->
-                    
-                    <!--User start-->
-                    <div class="col mr-sm-50 mr-xs-50">
-                        <div class="header-user">
-                            <a href="login-register.html" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
-                        </div>
-                    </div>
-                    <!--User end-->
-                </div>
-                
-                <!--Mobile Menu start-->
-                <div class="row">
-                    <div class="col-12 d-flex d-lg-none">
-                        <div class="mobile-menu"></div>
-                    </div>
-                </div>
-                <!--Mobile Menu end-->
-                
-            </div>
-        </div>
-    </header>
-    <!--Header section end-->
+{% block content %}
     
     <!--Page Banner Section start-->
     <div class="page-banner-section section">
@@ -127,246 +28,45 @@
                     <div class="row">
 
                         <!--Property start-->
+                        {% for listing in listings %}
                         <div class="property-item list col-md-6 col-12 mb-40">
                             <div class="property-inner">
                                 <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/property/property-1.jpg" alt=""></a>
+                                    <a href="single-properties.html"><img src="{{ listing.photo_main.url }}" alt=""></a>
                                     <ul class="property-feature">
                                         <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
+                                            <span class="area"><img src="assets/images/icons/area.png" alt="">{{ listing.sqft }} SqFt</span>
                                         </li>
                                         <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
+                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">{{ listing.bedrooms }}</span>
                                         </li>
                                         <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
+                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">{{ listing.bathrooms }}</span>
                                         </li>
                                         <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
+                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">{{ listing.garage }}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="content">
                                     <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">Friuli-Venezia Giulia</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">568 E 1st Ave, Miami</span>
+                                        <h3 class="title"><a href="single-properties.html">{{ listing.title }}</a></h3>
+                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
                                     </div>
                                     <div class="right">
                                         <div class="type-wrap">
-                                            <span class="price">$550<span>M</span></span>
-                                            <span class="type">For Rent</span>
+                                            <span class="price">${{ listing.price }}<span>{{ listing.rent }}</span></span>
+                                            <span class="type">{{listing.servicetype}}</span>
                                         </div>
                                     </div>
                                     <div class="desc">
-                                        <p>Friuli-Venezia Giflia is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
+                                        <p>{{listing.description|striptags|truncatechars:200}}</p>
                                     </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
+                                    <a href="{% url 'listing' listing.id %}" class="read-more">View Property</a>
                                 </div>
                             </div>
                         </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item list col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">Feature</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/property-2.jpg" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">Marvel de Villa</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">450 E 1st Ave, New Jersey</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">$2550</span>
-                                            <span class="type">For Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="desc">
-                                        <p>Marvel de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
-                                    </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item list col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">popular</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/property-3.jpg" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">Ruposi Bangla Cottage</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">215 L AH Rod, California</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">$550<span>M</span></span>
-                                            <span class="type">For Rent</span>
-                                        </div>
-                                    </div>
-                                    <div class="desc">
-                                        <p>Ruposi Bangla Cottage is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
-                                    </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item list col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/property/property-4.jpg" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">MayaKanon de Villa</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">12 EA 1st Ave, Washington</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">$550<span>M</span></span>
-                                            <span class="type">For Rent</span>
-                                        </div>
-                                    </div>
-                                    <div class="desc">
-                                        <p>MayaKanon de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
-                                    </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item list col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/property/property-5.jpg" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">Azorex de South Villa</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">668 L 2nd Ave, Boston</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">$2550</span>
-                                            <span class="type">For Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="desc">
-                                        <p>Azorex de South Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
-                                    </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item list col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">Feature</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/property-6.jpg" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img src="assets/images/icons/area.png" alt="">550 SqFt</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img src="assets/images/icons/bed.png" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img src="assets/images/icons/bath.png" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img src="assets/images/icons/parking.png" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">Radison de Villa</a></h3>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">12 1st Ave, New Yourk</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">$550<span>M</span></span>
-                                            <span class="type">For Rent</span>
-                                        </div>
-                                    </div>
-                                    <div class="desc">
-                                        <p>Radison de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun</p>
-                                    </div>
-                                    <a href="single-properties.html" class="read-more">View Property</a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                         <!--Property end-->
 
                     </div>
@@ -696,37 +396,7 @@
         </div>
         <!--Footer Top end-->
         
-        <!--Footer bottom start-->
-        <div class="footer-bottom section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="copyright text-center">
-                            <p>Copyright &copy;2020 <a  href="#">sabbirdk</a>. All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Footer bottom end-->
         
-     </footer>
-     <!--Footer section end-->
 </div>
 
-<!-- Placed js at the end of the document so the pages load faster -->
-
-<!-- All jquery file included here -->
-<script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyDAq7MrCR1A2qIShmjbtLHSKjcEIEBEEwM"></script>
-<script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/map-place.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
-
-
-<!-- Mirrored from demo.hasthemes.com/sabbirdk-preview/sabbirdk/properties-list-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Aug 2020 08:46:27 GMT -->
-</html>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import Realtor,Listing
 from django.views.generic import DetailView
 
@@ -17,6 +17,21 @@ def index(request):
     }
      
     return render(request, 'index.html', context)
+def listing(request):
+    listings = Listing.objects.all()
+    context = {
+        'listings':listings
+    }    
+    return render(request, 'properties-list-left-sidebar.html', context)
+def listingdetail(request, id):
+  listing = get_object_or_404(Listing, pk=id)
+  
+  context = {
+    'listing': listing,
+    
+  }
+
+  return render(request, 'single-properties.html', context)    
 def agents(request):
     realtors = Realtor.objects.order_by('-hire_date')
     context = {
