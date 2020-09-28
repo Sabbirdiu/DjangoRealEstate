@@ -1,11 +1,13 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Realtor,Listing
+from news.models import Post
 from django.views.generic import DetailView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
 def index(request):
-    featured = Listing.objects.filter(featured=True)
+    featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:6]
+    news_featured = Post.objects.filter(featured=True).order_by('-timestamp')[0:6]
     latest = Listing.objects.order_by('-list_date')[0:6]
     realtors = Realtor.objects.order_by('-hire_date')
     products_slider = Listing.objects.all().order_by('-id')[:2]
@@ -15,7 +17,8 @@ def index(request):
         'object_list':featured,
         'latest':latest,
         'products_slider':products_slider,
-        'service_slider':service_slider
+        'service_slider':service_slider,
+        'news_object_list':news_featured
        
     }
      

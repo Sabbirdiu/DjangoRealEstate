@@ -24,12 +24,13 @@
         <div class="container">
             
             <div class="row">
+               {% for post in post %}
+                <!--News start-->
                
-                <!--News start-->
                 <div class="col-lg-4 col-md-6 col-12 mb-30">
                     <div class="news">
                         <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-1.jpg" alt=""></a>
+                            <a href="news-details.html"><img src="{{ post.photo_main.url }}" alt=""></a>
                             <div class="meta-wrap">
                                 <ul class="meta">
                                     <li>By <a href="#">Donald</a></li>
@@ -42,232 +43,16 @@
                             </div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="news-details.html">Duplex Villa with Altra Concept</a></h4>
+                            <h4 class="title"><a href="news-details.html">{{post.title}}</a></h4>
                             <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
+                                <p>{{post.overview}}</p>
                             </div>
                             <a href="news-details.html" class="readmore">Continure Reading</a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-2.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">Joint Mortgage: Pros vs. Cons</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-3.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">Dealing with Student Loan Debt</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-               
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-4.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">Bridging the home ownership gap</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-5.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">7 Signs That the Housing Market Is Cooling Off</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-6.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">6 Mortgage Myths You Can Ignore </a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-               
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-7.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">Your ideas are very important to us</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-8.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">We’re doing business with pleasure</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
-                <!--News start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-30">
-                    <div class="news">
-                        <div class="image">
-                            <a href="news-details.html"><img src="assets/images/news/news-9.jpg" alt=""></a>
-                            <div class="meta-wrap">
-                                <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                                <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4 class="title"><a href="news-details.html">Modern apartment adjacent to eco park</a></h4>
-                            <div class="desc">
-                                <p>Sabbirdk- Real Estateprofessional Templatethe best theme for  elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit sed do.</p>
-                            </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
-                        </div>
-                    </div>
-                </div>
-                <!--News end-->
-                
             </div>
             
             <div class="row mt-30">
