@@ -22,3 +22,35 @@ class Realtor(models.Model):
     return self.name
   def get_absolute_url(self):
         return reverse('agent-details',kwargs={'pk':self.pk})  
+
+SERVICE_TYPE = (
+  ('For Rent','For Rent'),
+  ('For Sale','For Sale'),
+)
+RENT_TYPE = (
+  ('Month','Month'),
+  ('Year','Year'),
+)
+
+class Listing(models.Model):
+  realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
+  title = models.CharField(max_length=200)
+  location = models.CharField(max_length=200)
+  city = models.CharField(max_length=100)
+  state = models.CharField(max_length=100)
+  zipcode = models.CharField(max_length=20)
+  description = models.TextField(blank=True)
+  price = models.IntegerField()
+  bedrooms = models.IntegerField()
+  bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
+  garage = models.IntegerField(default=0)
+  sqft = models.IntegerField()
+  kitchen = models.IntegerField()
+  photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
+  video  = models.FileField(upload_to="video/%y",null=True)
+  is_published = models.BooleanField(default=True)
+  list_date = models.DateTimeField(default=datetime.now, blank=True)
+  servicetype = models.CharField(choices = SERVICE_TYPE,max_length=30,null=True)
+  rent = models.CharField(choices = RENT_TYPE,max_length=30,null=True)   
+  def __str__(self):
+    return self.title
