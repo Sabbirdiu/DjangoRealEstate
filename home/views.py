@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Realtor,Listing
 from django.views.generic import DetailView
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
 def index(request):
@@ -17,12 +18,18 @@ def index(request):
     }
      
     return render(request, 'index.html', context)
+
 def listing(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+    paginator = Paginator(listings, 1)
+    page = request.GET.get('page')
+    paged_listings = paginator.get_page(page)
     context = {
-        'listings':listings
+        'listings':paged_listings
     }    
     return render(request, 'properties-list-left-sidebar.html', context)
+
+
 def listingdetail(request, id):
   listing = get_object_or_404(Listing, pk=id)
   
