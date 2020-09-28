@@ -28,8 +28,8 @@ SERVICE_TYPE = (
   ('For Sale','For Sale'),
 )
 RENT_TYPE = (
-  ('Month','Month'),
-  ('Year','Year'),
+  ('M','M'),
+  ('Y','Y'),
 )
 
 class Listing(models.Model):
@@ -50,6 +50,7 @@ class Listing(models.Model):
   video  = models.FileField(upload_to="video/%y",null=True)
   is_published = models.BooleanField(default=True)
   list_date = models.DateTimeField(default=datetime.now, blank=True)
+  featured = models.BooleanField()
   servicetype = models.CharField(choices = SERVICE_TYPE,max_length=30,null=True)
   rent = models.CharField(choices = RENT_TYPE,max_length=30,null=True)   
   def __str__(self):

@@ -332,7 +332,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     - Section Title
 ------------------------------------------*/
 .section-title {
-  /* background-image: url(../images/others/title-bg.png); */
+
   background-repeat: no-repeat;
 }
 
