@@ -5,7 +5,7 @@ from django.views.generic import DetailView
 # Create your views here.
 def index(request):
     featured = Listing.objects.filter(featured=True)
-    latest = Listing.objects.order_by('-timestamp')[0:6]
+    latest = Listing.objects.order_by('-list_date')[0:6]
     realtors = Realtor.objects.order_by('-hire_date')
     context = {
         'realtors': realtors,
