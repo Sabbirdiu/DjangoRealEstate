@@ -9,11 +9,13 @@ def index(request):
     latest = Listing.objects.order_by('-list_date')[0:6]
     realtors = Realtor.objects.order_by('-hire_date')
     products_slider = Listing.objects.all().order_by('-id')[:2]
+    service_slider = Listing.objects.all().order_by('-id')[:4]
     context = {
         'realtors': realtors,
         'object_list':featured,
         'latest':latest,
-        'products_slider':products_slider
+        'products_slider':products_slider,
+        'service_slider':service_slider
        
     }
      

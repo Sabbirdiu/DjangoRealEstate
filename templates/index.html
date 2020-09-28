@@ -351,40 +351,36 @@
             <!--Section Title end-->
             
             <div class="row row-30 align-items-center">
+                
                 <div class="col-lg-5 col-12 mb-30">
+                    
                     <div class="property-slider-2">
+                        {% for listing in service_slider %}
                         <div class="property-2">
+                            
                             <div class="property-inner">
-                                <a href="single-properties.html" class="image"><img src="{% static 'images/property/property-13.jpg' %}" alt=""></a>
+                                
+                                <a href="{% url 'listing' listing.id %}" class="image"><img src="{{ listing.photo_main.url }}" alt=""></a>
                                 <div class="content">
-                                    <h4 class="title"><a href="single-properties.html">Friuli-Venezia Giulia</a></h4>
-                                    <span class="location">568 E 1st Ave, Miami</span>
-                                    <h4 class="type">Rent <span>$550 <span>Month</span></span></h4>
+                                    <h4 class="title"><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h4>
+                                    <span class="location">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
+                                    <h4 class="type">{{ listing.rent }} <span>${{ listing.price }} <span>{{listing.servicetype}}</span></span></h4>
                                     <ul>
-                                        <li>6 Bed</li>
-                                        <li>4 Bath</li>
-                                        <li>3 Garage</li>
+                                        <li>{{listing.bedrooms}} Bed</li>
+                                        <li>{{listing.bathrooms}} Bath</li>
+                                        <li>{{listing.garage}} Garage</li>
                                     </ul>
                                 </div>
+                                
                             </div>
+                            
                         </div>
-                        <div class="property-2">
-                            <div class="property-inner">
-                                <a href="single-properties.html" class="image"><img src="{% static 'images/property/property-14.jpg' %}" alt=""></a>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-properties.html">Marvel de Villa</a></h4>
-                                    <span class="location">450 E 1st Ave, New Jersey</span>
-                                    <h4 class="type">Rent <span>$550 <span>Month</span></span></h4>
-                                    <ul>
-                                        <li>6 Bed</li>
-                                        <li>4 Bath</li>
-                                        <li>3 Garage</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+                        
                     </div>
+                   
                 </div>
+                
                 <div class="col-lg-7 col-12">
                     <div class="row row-20">
 
@@ -520,9 +516,6 @@
     </div>
     <!--New property section end-->
 
-    <!--Funfact Section start-->
-   
-    <!--Funfact Section end-->
 
     <!--Agent Section start-->
     <div class="agent-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
