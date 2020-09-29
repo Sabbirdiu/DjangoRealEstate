@@ -57,7 +57,9 @@ class Listing(models.Model):
   list_date = models.DateTimeField(default=datetime.now, blank=True)
   featured = models.BooleanField()
   servicetype = models.CharField(choices = SERVICE_TYPE,max_length=30,null=True)
-  rent = models.CharField(choices = RENT_TYPE,max_length=30,null=True)   
+  rent_agreement = models.CharField(choices = RENT_TYPE,max_length=30,null=True)   
+
+  
   def __str__(self):
     return self.title
   def get_absolute_url(self):
