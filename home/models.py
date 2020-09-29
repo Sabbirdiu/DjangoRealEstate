@@ -10,7 +10,7 @@ class Realtor(models.Model):
   name = models.CharField(max_length=200)
   slug = models.SlugField()
   photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
-  description = models.TextField(blank=True)
+  description = RichTextField(blank=True,null=True)
   phone = models.CharField(max_length=20)
   email = models.CharField(max_length=50)
   ownaddress = models.CharField(max_length=50)
