@@ -21,7 +21,7 @@
                             <!--Hero Content start-->
                             <div class="hero-property-content text-center">
 
-                                <h1 class="title"><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h1>
+                                <h1 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h1>
                                 <span class="location"><img src="{% static 'images/icons/hero-marker.png' %}" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
                                 <div class="type-wrap">
                                     <span class="type">{{ listing.rent }}</span>
@@ -204,7 +204,7 @@
                     <div class="property-item col">
                         <div class="property-inner">
                             <div class="image">
-                                <a href="{% url 'listing' listing.id %}"><img style="height: 240px;width: 420px;"  src="{{ listing.photo_main.url }}" alt=""></a>
+                                <a href="{{ listing.get_absolute_url }}"><img style="height: 240px;width: 420px;"  src="{{ listing.photo_main.url }}" alt=""></a>
                                 <ul class="property-feature">
                                     <li>
                                         <span class="area"><img src="{% static 'images/icons/area.png' %}" alt="">{{ listing.sqft }} SqFt</span>
@@ -222,7 +222,7 @@
                             </div>
                             <div class="content">
                                 <div class="left">
-                                    <h3 class="title"><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h3>
+                                    <h3 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h3>
                                     <span class="location"><img src="{% static 'images/icons/marker.png' %}" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
                                 </div>
                                 <div class="right">
@@ -360,9 +360,9 @@
                             
                             <div class="property-inner">
                                 
-                                <a href="{% url 'listing' listing.id %}" class="image"><img src="{{ listing.photo_main.url }}" alt=""></a>
+                                <a href="{{ listing.get_absolute_url }}" class="image"><img src="{{ listing.photo_main.url }}" alt=""></a>
                                 <div class="content">
-                                    <h4 class="title"><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h4>
+                                    <h4 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h4>
                                     <span class="location">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
                                     <h4 class="type">{{ listing.rent }} <span>${{ listing.price }} <span>{{listing.servicetype}}</span></span></h4>
                                     <ul>
@@ -477,7 +477,7 @@
                 <div class="property-item col-lg-4 col-md-6 col-12 mb-40">
                     <div class="property-inner">
                         <div class="image">
-                            <a href="{% url 'listing' listing.id %}"><img src="{{ listing.photo_main.url }}" alt=""></a>
+                            <a href="{{ listing.get_absolute_url }}"><img src="{{ listing.photo_main.url }}" alt=""></a>
                             <ul class="property-feature">
                                 <li>
                                     <span class="area"><img src="{% static 'images/icons/area.png' %}" alt="">{{ listing.sqft }} SqFt</span>
@@ -495,7 +495,7 @@
                         </div>
                         <div class="content">
                             <div class="left">
-                                <h3 class="title"><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h3>
+                                <h3 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h3>
                                 <span class="location"><img src="{% static 'images/icons/marker.png' %}" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
                             </div>
                             <div class="right">
@@ -539,7 +539,7 @@
                     <div class="col">
                         <div class="agent">
                             <div class="image">
-                                <a class="img" href="{% url 'agent-details' realtor.id %}"><img src="{{ realtor.photo.url }}" alt=""></a>
+                                <a class="img" href="{{ realtor.get_absolute_url }}"><img src="{{ realtor.photo.url }}" alt=""></a>
                                 <div class="social">
                                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -548,7 +548,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h4 class="title"><a href="{% url 'agent-details' realtor.id %}">{{ realtor.name }}</a></h4>
+                                <h4 class="title"><a href="{{ realtor.get_absolute_url }}">{{ realtor.name }}</a></h4>
                                 <a href="#" class="phone">{{ realtor.phone }}</a>
                                 <a href="#" class="email">{{ realtor.email }}</a>
                                 <!-- <span class="properties">5 Properties</span> -->

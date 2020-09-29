@@ -4,9 +4,11 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from ckeditor.fields import  RichTextField
 
 class Realtor(models.Model):
   name = models.CharField(max_length=200)
+  slug = models.SlugField()
   photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
   description = models.TextField(blank=True)
   phone = models.CharField(max_length=20)
@@ -21,7 +23,9 @@ class Realtor(models.Model):
   def __str__(self):
     return self.name
   def get_absolute_url(self):
-        return reverse('agent-details',kwargs={'pk':self.pk})  
+        return reverse('agent-details', kwargs={
+            'slug': self.slug
+        })  
 
 SERVICE_TYPE = (
   ('For Rent','For Rent'),
@@ -35,11 +39,12 @@ RENT_TYPE = (
 class Listing(models.Model):
   realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
   title = models.CharField(max_length=200)
+  slug = models.SlugField()
   location = models.CharField(max_length=200)
   city = models.CharField(max_length=100)
   state = models.CharField(max_length=100)
   zipcode = models.CharField(max_length=20)
-  description = models.TextField(blank=True)
+  description = RichTextField(blank=True)
   price = models.IntegerField()
   bedrooms = models.IntegerField()
   bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
@@ -55,3 +60,7 @@ class Listing(models.Model):
   rent = models.CharField(choices = RENT_TYPE,max_length=30,null=True)   
   def __str__(self):
     return self.title
+  def get_absolute_url(self):
+        return reverse('listing', kwargs={
+            'slug': self.slug
+        })  

@@ -35,8 +35,8 @@ def listing(request):
     return render(request, 'properties-list-left-sidebar.html', context)
 
 
-def listingdetail(request, id):
-  listing = get_object_or_404(Listing, pk=id)
+def listingdetail(request, slug):
+  listing = get_object_or_404(Listing, slug=slug)
   
   context = {
     'listing': listing,

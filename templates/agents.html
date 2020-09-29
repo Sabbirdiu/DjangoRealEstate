@@ -32,7 +32,7 @@
                 <div class="col-lg-3 col-sm-6 col-12 mb-30">
                     <div class="agent">
                         <div class="image">
-                            <a class="img" href="{% url 'agent-details' realtor.id %}"><img src="{{ realtor.photo.url }}" alt=""></a>
+                            <a class="img" href="{{ realtor.get_absolute_url }}"><img src="{{ realtor.photo.url }}" alt=""></a>
                             <div class="social">
                                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="{% url 'agent-details' realtor.id %}">{{ realtor.name }}</a></h4>
+                            <h4 class="title"><a href="{{ realtor.get_absolute_url }}">{{ realtor.name }}</a></h4>
                             <a href="#" class="phone">{{ realtor.phone }}</a>
                             <a href="#" class="email">{{ realtor.email }}</a>
                             <!-- <span class="properties">5 Properties</span> -->
