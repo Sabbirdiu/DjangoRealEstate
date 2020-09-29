@@ -30,10 +30,10 @@
                                 </li>
                                 <li class="has-dropdown"><a href="#">pages</a>
                                     <ul class="sub-menu">
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="contact-us.html">Contact us</a></li>
-                                        <li><a href="login-register.html">Login & Register</a></li>
-                                        <li><a href="my-account.html">My Account</a></li>
+                                        <li><a href="{% url 'about' %}">About us</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact us</a></li>
+                                        <li><a href="{% url 'log_reg' %}">Login & Register</a></li>
+                                        <li><a href="{% url 'account' %}">My Account</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -44,7 +44,7 @@
                     <!--User start-->
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
-                            <a href="login-register.html" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
+                            <a href="{% url 'log_reg' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
                         </div>
                     </div>
                     <!--User end-->

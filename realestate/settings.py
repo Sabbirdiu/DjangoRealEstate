@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # local
     'home',
     'news',
+    'contact',
     'ckeditor',
     'ckeditor_uploader',
 ]

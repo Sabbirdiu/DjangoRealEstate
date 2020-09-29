@@ -18,10 +18,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 
+from contact.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('news/',include('news.urls')),
+    path('contact/',include('contact.urls')),
+    path('about/',about,name='about'),
+    path('login-register/',log_reg,name='log_reg'),
+    path('my-account/',myaccount,name='account'),
+
+    
   
 
 ]
