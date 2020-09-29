@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import Post
 # Create your views here.
 def post(request):
-    news = Post.objects.order_by('-timestamp')
+    post_list = Post.objects.order_by('-timestamp')
     context = {
-        'post':news
+        'post_list':post_list
     }
-    return render(request,'news.html')
+    return render(request,'news.html',context)

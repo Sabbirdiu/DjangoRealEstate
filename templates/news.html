@@ -24,28 +24,28 @@
         <div class="container">
             
             <div class="row">
-               {% for post in post %}
+               {% for obj in post_list %}
                 <!--News start-->
                
                 <div class="col-lg-4 col-md-6 col-12 mb-30">
                     <div class="news">
                         <div class="image">
-                            <a href="news-details.html"><img src="{{ post.photo_main.url }}" alt=""></a>
+                            <a href="news-details.html"><img style="height: 240px;width: 420px;"  src="{{ obj.photo_main.url }}" alt=""></a>
                             <div class="meta-wrap">
                                 <ul class="meta">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
+                                    <li>By <a href="#">{{ obj.author }}</a></li>
+                                    <li>{{ obj.timestamp|date:"F d, Y" }}</li>
                                 </ul>
                                 <ul class="meta back">
-                                    <li>By <a href="#">Donald</a></li>
-                                    <li>September 30, 2020</li>
+                                    <li>By <a href="#">{{ obj.author }}</a></li>
+                                    <li>{{ obj.timestamp|date:"F d, Y" }}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="news-details.html">{{post.title}}</a></h4>
+                            <h4 class="title"><a href="news-details.html">{{ obj.title }}</a></h4>
                             <div class="desc">
-                                <p>{{post.overview}}</p>
+                                <p>{{ obj.overview|striptags|truncatechars:150 }}</p>
                             </div>
                             <a href="news-details.html" class="readmore">Continure Reading</a>
                         </div>
