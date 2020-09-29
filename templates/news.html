@@ -30,7 +30,7 @@
                 <div class="col-lg-4 col-md-6 col-12 mb-30">
                     <div class="news">
                         <div class="image">
-                            <a href="news-details.html"><img style="height: 240px;width: 420px;"  src="{{ obj.photo_main.url }}" alt=""></a>
+                            <a href="{{ obj.get_absolute_url }}"><img style="height: 240px;width: 420px;"  src="{{ obj.photo_main.url }}" alt=""></a>
                             <div class="meta-wrap">
                                 <ul class="meta">
                                     <li>By <a href="#">{{ obj.author }}</a></li>
