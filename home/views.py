@@ -9,7 +9,7 @@ def index(request):
     featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:6]
     news_featured = Post.objects.filter(featured=True).order_by('-timestamp')[0:6]
     latest = Listing.objects.order_by('-list_date')[0:6]
-    realtors = Realtor.objects.order_by('-hire_date')
+    realtors = Realtor.objects.order_by('-hire_date')[:6]
     products_slider = Listing.objects.all().order_by('-id')[:2]
     service_slider = Listing.objects.all().order_by('-id')[:4]
     context = {
