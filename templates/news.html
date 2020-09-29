@@ -43,11 +43,11 @@
                             </div>
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="news-details.html">{{ obj.title }}</a></h4>
+                            <h4 class="title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h4>
                             <div class="desc">
                                 <p>{{ obj.overview|striptags|truncatechars:150 }}</p>
                             </div>
-                            <a href="news-details.html" class="readmore">Continure Reading</a>
+                            <a href="{{ obj.get_absolute_url }}" class="readmore">Continure Reading</a>
                         </div>
                     </div>
                 </div>
