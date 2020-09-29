@@ -4,3 +4,5 @@ from ckeditor.fields import  RichTextField
 class About(models.Model):
     description = RichTextField(blank=True,null=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+class Partnars(models.Model):
+    logo = models.ImageField(upload_to='photos/%Y/%m/%d/')

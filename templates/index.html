@@ -636,12 +636,9 @@
                 
                 <!--Brand Slider start-->
                 <div class="brand-carousel section">
-                    <div class="brand col"><img src="assets/images/brands/brand-1.png" alt=""></div>
-                    <div class="brand col"><img src="assets/images/brands/brand-2.png" alt=""></div>
-                    <div class="brand col"><img src="assets/images/brands/brand-3.png" alt=""></div>
-                    <div class="brand col"><img src="assets/images/brands/brand-4.png" alt=""></div>
-                    <div class="brand col"><img src="assets/images/brands/brand-5.png" alt=""></div>
-                    <div class="brand col"><img src="assets/images/brands/brand-6.png" alt=""></div>
+                    {% for partnar in partnar %}
+                    <div class="brand col"><img src="{{partnar.logo.url}}" alt=""></div>
+                    {% endfor %}
                 </div>
                 <!--Brand Slider end-->
                 

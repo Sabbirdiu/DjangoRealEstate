@@ -3,7 +3,7 @@ from .models import Realtor,Listing
 from news.models import Post
 from django.views.generic import DetailView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-
+from contact.models import Partnars
 # Create your views here.
 def index(request):
     featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:6]
@@ -12,13 +12,15 @@ def index(request):
     realtors = Realtor.objects.order_by('-hire_date')[:6]
     products_slider = Listing.objects.all().order_by('-id')[:2]
     service_slider = Listing.objects.all().order_by('-id')[:4]
+    partnar = Partnars.objects.all().order_by('-id')[:5]
     context = {
         'realtors': realtors,
         'object_list':featured,
         'latest':latest,
         'products_slider':products_slider,
         'service_slider':service_slider,
-        'news_object_list':news_featured
+        'news_object_list':news_featured,
+        'partnar':partnar
        
     }
      
