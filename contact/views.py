@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from home.models import Listing,Realtor
-from .models import About,Partnars
+from .models import About,Partnars,Contact
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-
+from django.contrib import messages
 # Create your views here.
 def about(request):
     service_slider = Listing.objects.all().order_by('-id')[:4]
@@ -21,9 +21,46 @@ def about(request):
     }
     return render(request,'about-us.html',context)
 
-def contact(request):
+# def contact(request):
 
-    return render(request,'contact-us.html')    
+#     return render(request,'contact-us.html')    
+
+def contact(request):
+  if request.method == 'POST':
+    name = request.POST['name']
+    email = request.POST['email']
+    phone = request.POST['phone']
+    subject = request.POST['subject']
+    message = request.POST['message']
+    user_id = request.POST['user_id']
+    
+
+    #  Check if user has made inquiry already
+    if request.user.is_authenticated:
+      user_id = request.user.id
+      has_contacted = Contact.objects.all().filter( user_id=user_id)
+      if has_contacted:
+        messages.error(request, 'You have already made an inquiry for this listing')
+        return redirect('contact')
+
+    contact = Contact(name=name, email=email, phone=phone,subject='subject', message=message, user_id=user_id )
+
+    contact.save()
+
+    # Send email
+    # send_mail(
+    #   'Property Listing Inquiry',
+    #   'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
+    #   'traversy.brad@gmail.com',
+    #   [realtor_email, 'techguyinfo@gmail.com'],
+    #   fail_silently=False
+    # )
+
+    messages.success(request, 'Your request has been submitted, a realtor will get back to you soon')
+    return redirect('contact')
+
+  return render(request,'contact-us.html')
+
 
 def register(request):
   if request.method == 'POST':
@@ -81,6 +118,9 @@ def dashboard(request):
 def log_reg(request):
     return render(request,'login-register.html')      
 def logout(request):
-    return render(request,'index')        
+    if request.method == 'POST':
+      auth.logout(request)
+      messages.success(request, 'You are now logged out')
+      return redirect('home')        
 def myaccount(request):
     return render(request,'my-account.html')            
