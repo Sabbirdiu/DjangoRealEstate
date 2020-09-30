@@ -77,7 +77,7 @@
                                                 Login</a>
                                             </li>
                                         {% endif %}
-                                        <li><a href="{% url 'account' %}">My Account</a></li>
+                                        <!-- <li><a href="{% url 'account' %}">My Account</a></li> -->
                                     </ul>
                                 </li>
                             </ul>
@@ -88,7 +88,11 @@
                     <!--User start-->
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
+                            {% if user.is_authenticated %}  
+                            <a href="{% url 'account' %}" class="user-toggle"><i class="pe-7s-user"></i><span>{{ user.first_name }} account</span></a>
+                            {% else %}
                             <a href="{% url 'register' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Register</span></a>
+                            {% endif %}
                         </div>
                         
                     </div>
