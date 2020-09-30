@@ -48,67 +48,67 @@
                         
                     <!--Comment start-->
                     <div class="comment-wrap section">
-                        <h3>3 Comment</h3>
-
+                        <h3> Total Comments {{comments.count}}</h3>
+                        {% for comment in comments %}
                         <ul class="comment-list">
                             <li>
                                 <div class="comment">
-                                    <div class="image"><img src="assets/images/review/review-1.jpg" alt=""></div>
+                                   
                                     <div class="content">
-                                        <h5>Alvaro Santos</h5>
+                                        <h5>{{ comment.name }}  </h5>
                                         <div class="d-flex flex-wrap justify-content-between">
-                                            <span class="time">10 August, 2020  |  10 Min ago</span>
-                                            <a href="#" class="reply">reply</a>
+                                            <span class="time">{{ comment.created }}</span>
+                                            <!-- <a href="#" class="reply">reply</a> -->
+                                            <!-- <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button> -->
                                         </div>
                                         <div class="decs">
-                                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
+                                            <p>{{ comment.body|linebreaks }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                {% for replay in comment.replies.all %}
                                 <ul class="child-comment">
                                     <li>
                                         <div class="comment">
-                                            <div class="image"><img src="assets/images/review/review-2.jpg" alt=""></div>
+                                           
                                             <div class="content">
-                                                <h5>Silvia Anderson</h5>
+                                                <h5>{{ replay.name }} </h5>
                                                 <div class="d-flex flex-wrap justify-content-between">
-                                                    <span class="time">10 August, 2020  |  25 Min ago</span>
-                                                    <a href="#" class="reply">reply</a>
+                                                    <span class="time"> {{ replay.created }}</span>
+                                                
+                                                    <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button>
                                                 </div>
-                                                <div class="decs">
-                                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
+                                                <div class="decs replied-comments">
+                                                    <p>{{ replay.body }}</p>
+                                                    <form action="." method="post" id="form1">
+                                                        <!-- {{ comment_form.as_p }}
+                                                        {% csrf_token %} -->
+                                                       
+                                                       <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                                       <input class="  btn btn-primary" type="button" name="button" value="Replay">
+                                                   </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+                                {% endfor %}
                             </li>
-                            <li>
-                                <div class="comment">
-                                    <div class="image"><img src="assets/images/review/review-3.jpg" alt=""></div>
-                                    <div class="content">
-                                        <h5>Nicolus Christopher</h5>
-                                        <div class="d-flex flex-wrap justify-content-between">
-                                            <span class="time">10 August, 2020  |  35 Min ago</span>
-                                            <a href="#" class="reply">reply</a>
-                                        </div>
-                                        <div class="decs">
-                                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <h3>Leave a Comment</h3>
+                           
+                        </ul> 
+                        {% empty %}
+                   
+                        <h4>There are no comments yet.</h4>
+                        {% endfor %}
+                      
+                        <h3>Add a Comment</h3>
 
                         <div class="comment-form">
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mb-30"><input type="text" placeholder="Name"></div>
-                                    <div class="col-md-6 col-12 mb-30"><input type="email" placeholder="Email"></div>
-                                    <div class="col-12 mb-30"><textarea placeholder="Message"></textarea></div>
-                                    <div class="col-12"><button class="btn">send now</button></div>
+                            <form action="." method="POST">
+                                <div class="">
+                                    {{ comment_form.as_p }}
+                                    {% csrf_token %}
+                                    <div class="col-12"><button type="submit" class="btn">send now</button></div>
                                 </div>
                             </form>
                         </div>
@@ -235,4 +235,56 @@
         </div>
     </div>
     <!--News Section end-->
+    <!-- Comments Form --> 
+    <!-- {% for comment in comments %}
+    <div class="comment" style="background-color:">
+        <blockquote>
+        <p style="background-color: hotpink;" class="info">{{ comment.name }} | {{ comment.created }}</p>
+            {{ comment.body|linebreaks }}
+            <button type="button" name="button" class="reply-btn btn-outline-dark btn-sm" >Reply</button> 
+        </blockquote class="blockquote" >          
+        <div class="replied-comments"  style="display: none;" >
+        {% for replay in comment.replies.all %}
+            <p style="background-color: khaki;" class="info">{{ replay.name }} | {{ replay.created }}</p>
+            <li style="background-color: lightcoral;" >{{ replay.body }}</li>
+        {% endfor %}
+     </div>
+     <script src="">
+         $('.reply-btn').click(function(){
+
+            $(this).parent().next('.replied-comments').fadeToggle()
+         })
+     </script>
+        <h5>Replay</h5>
+        
+        <script>
+
+        </script>
+        <form action="." method="post">
+             {{ comment_form.as_p }}
+            {% csrf_token %}
+            
+            <input type="hidden" name="parent_id" value="{{ comment.id }}">
+            <input class="btn btn-primary" type="submit" value="Replay">
+        </form>
+    </div>
+    {% empty %}
+    <h4>There are no comments yet.</h4>
+    {% endfor %} --> 
+   
+<!--    
+    <h2>Add a new comment</h2>
+    <form action="." method="post">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Add comment</button>
+    </form> -->
+
+<!-- Comment with nested comments -->
+<script src="text/javascript">
+$('.reply-btn').click(function(){
+
+$(this).parent().next('.replied-comments').fadeToggle()
+})
+</script>
     {% endblock %}
