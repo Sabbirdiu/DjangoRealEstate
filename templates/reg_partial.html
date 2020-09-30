@@ -1,0 +1,19 @@
+<ul class="login-register-tab-list nav">
+    <li
+    
+    {% if 'login' in request.path %}
+      class="nav-item active"
+    {% else %}
+      class="nav-item "
+    {% endif %}
+  
+    ><a  href="{% url 'login' %}">Login</a></>
+    <li>or</li>
+    <li
+    {% if 'register' in request.path %}
+      class="nav-item active "
+    {% else %}
+      class="nav-item "
+    {% endif %}
+    ><a href="{% url 'register' %}">Register</a></li>
+</ul>

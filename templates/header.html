@@ -19,20 +19,64 @@
                     <div class="col d-none d-lg-flex">
                         <nav class="main-menu">
                             <ul>
-                                <li class=""><a href="{% url 'home' %}">Home</a>
+                                <li 
+                                {% if '/' == request.path %}
+                                    class="nav-item active mr-3"
+                                {% else %}
+                                    class="nav-item mr-3"
+                                {% endif %}
+                  
+                                
+                                ><a href="{% url 'home' %}">Home</a>
                                 </li>
-                                <li class=""><a href="{% url 'listings' %}">Properties</a>
+                                <li
+                                {% if 'listings' in request.path %}
+                                class="nav-item active"
+                                {% else %}
+                                class="nav-item "
+                                {% endif %}
+ 
+                                ><a href="{% url 'listings' %}">Properties</a>
                                 </li>
-                                <li class=""><a href="{% url 'agents' %}">agents</a>
+                                <li 
+                                {% if 'agents' in request.path %}
+                                class="nav-item active"
+                                {% else %}
+                                class="nav-item "
+                                {% endif %}
+ 
+                                
+                                ><a href="{% url 'agents' %}">agents</a>
                                 </li>
                                
-                                <li class=""><a href="{% url 'news' %}">News</a>
+                                <li 
+                                {% if 'news' in request.path %}
+                                class="nav-item active"
+                                {% else %}
+                                class="nav-item "
+                                {% endif %}
+ 
+                                ><a href="{% url 'news' %}">News</a>
                                 </li>
-                                <li class="has-dropdown"><a href="#">pages</a>
+                                <li class="has-dropdown"><a >pages</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{% url 'about' %}">About us</a></li>
-                                        <li><a href="{% url 'contact' %}">Contact us</a></li>
-                                        <li><a href="{% url 'log_reg' %}">LogReg</a></li>
+                                        <li
+                                        {% if 'about' in request.path %}
+                                        class="nav-item active"
+                                        {% else %}
+                                        class="nav-item "
+                                        {% endif %}
+          
+                                        ><a href="{% url 'about' %}">About us</a></li>
+                                        <li
+                                        {% if 'contact' in request.path %}
+                                        class="nav-item active"
+                                        {% else %}
+                                        class="nav-item "
+                                        {% endif %}
+         
+                                        ><a href="{% url 'contact' %}">Contact us</a></li>
+                                        
                                         {% if user.is_authenticated %}
                                             <li
                                             {% if 'dashboard' in request.path %}
@@ -62,7 +106,7 @@
                                             {% endif %}
                                             >
                                             <a class="nav-link" href="{% url 'register' %}">
-                                                <i class="fas fa-user-plus"></i> Register</a>
+                                                Register</a>
                                             </li>
                                             <li
                                             {% if 'login' in request.path %}
@@ -91,7 +135,7 @@
                             {% if user.is_authenticated %}  
                             <a href="{% url 'account' %}" class="user-toggle"><i class="pe-7s-user"></i><span>{{ user.first_name }} account</span></a>
                             {% else %}
-                            <a href="{% url 'register' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Register</span></a>
+                            <a href="{% url 'register' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
                             {% endif %}
                         </div>
                         
