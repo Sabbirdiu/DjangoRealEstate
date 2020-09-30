@@ -33,15 +33,21 @@
             </div>
             <!--Section Title end-->
             
-            <div class="row">
+            <!-- <div class="row">
                 
                 <div class="contact-form-wrap col-12">
                     <div class="contact-form">
                         <form id="contact-form" method="POST" action="{% url 'contact' %}">
                             <div class="row">
+                                {% if user.is_authenticated %}
+                                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                                {% else %}
+                                    <input type="hidden" name="user_id" value="0">
+                                {% endif %}
+                                {% csrf_token %}
                                 
-                                <div class="col-md-6 col-12 mb-30"><input name="name" type="text" placeholder="Name"></div>
-                                <div class="col-md-6 col-12 mb-30"><input name="email" type="email" placeholder="Email"></div>
+                                <div class="col-md-6 col-12 mb-30"><input name="name" type="text" placeholder="Name" {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required></div>
+                                <div class="col-md-6 col-12 mb-30"><input name="email" type="email" placeholder="Email" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required></div>
                                 <div class="col-md-6 col-12 mb-30"><input name="phone" type="text" placeholder="Phone"></div>
                                 <div class="col-md-6 col-12 mb-30"><input name="subject" type="text" placeholder="Subject"></div>
                                 <div class="col-12 mb-30"><textarea name="message" placeholder="Message"></textarea></div>
@@ -52,7 +58,7 @@
                     </div>
                 </div>
                 
-            </div>
+            </div> -->
         </div>
     </div>
     <!--New property section end-->
