@@ -47,7 +47,7 @@
                     </div>
                         
                     <!--Comment start-->
-                    <div class="comment-wrap section">
+                    <!-- <div class="comment-wrap section">
                         <h3> Total Comments {{comments.count}}</h3>
                         {% for comment in comments %}
                         <ul class="comment-list">
@@ -58,8 +58,8 @@
                                         <h5>{{ comment.name }}  </h5>
                                         <div class="d-flex flex-wrap justify-content-between">
                                             <span class="time">{{ comment.created }}</span>
-                                            <!-- <a href="#" class="reply">reply</a> -->
-                                            <!-- <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button> -->
+                                            <a href="#" class="reply">reply</a>
+                                            <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button>
                                         </div>
                                         <div class="decs">
                                             <p>{{ comment.body|linebreaks }}</p>
@@ -81,8 +81,8 @@
                                                 <div class="decs replied-comments">
                                                     <p>{{ replay.body }}</p>
                                                     <form action="." method="post" id="form1">
-                                                        <!-- {{ comment_form.as_p }}
-                                                        {% csrf_token %} -->
+                                                        {{ comment_form.as_p }}
+                                                        {% csrf_token %}
                                                        
                                                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
                                                        <input class="  btn btn-primary" type="button" name="button" value="Replay">
@@ -113,7 +113,7 @@
                             </form>
                         </div>
 
-                    </div>
+                    </div> -->
                     <!--Comment end-->
                     
                 </div>
@@ -234,57 +234,35 @@
             </div>
         </div>
     </div>
-    <!--News Section end-->
-    <!-- Comments Form --> 
-    <!-- {% for comment in comments %}
-    <div class="comment" style="background-color:">
-        <blockquote>
-        <p style="background-color: hotpink;" class="info">{{ comment.name }} | {{ comment.created }}</p>
+<!-- Comments Form --> 
+<h2>Add a new comment</h2>
+<form action="." method="post">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Add comment</button>
+</form>
+
+<!-- Comment with nested comments -->
+{% for comment in comments %}
+    <div class="comment" style="background-color: ">
+        <p class="info">{{ comment.name }} | {{ comment.created }}</p>
             {{ comment.body|linebreaks }}
-            <button type="button" name="button" class="reply-btn btn-outline-dark btn-sm" >Reply</button> 
-        </blockquote class="blockquote" >          
-        <div class="replied-comments"  style="display: none;" >
+
         {% for replay in comment.replies.all %}
-            <p style="background-color: khaki;" class="info">{{ replay.name }} | {{ replay.created }}</p>
-            <li style="background-color: lightcoral;" >{{ replay.body }}</li>
+            <p class="info">{{ replay.name }} | {{ replay.created }}</p>
+            <li>{{ replay.body }}</li>
         {% endfor %}
-     </div>
-     <script src="">
-         $('.reply-btn').click(function(){
 
-            $(this).parent().next('.replied-comments').fadeToggle()
-         })
-     </script>
         <h5>Replay</h5>
-        
-        <script>
-
-        </script>
         <form action="." method="post">
-             {{ comment_form.as_p }}
+            {{ comment_form.as_p }}
             {% csrf_token %}
-            
+            <!-- Hidden input for parent comment.id -->
             <input type="hidden" name="parent_id" value="{{ comment.id }}">
             <input class="btn btn-primary" type="submit" value="Replay">
         </form>
     </div>
-    {% empty %}
-    <h4>There are no comments yet.</h4>
-    {% endfor %} --> 
-   
-<!--    
-    <h2>Add a new comment</h2>
-    <form action="." method="post">
-        {{ comment_form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Add comment</button>
-    </form> -->
-
-<!-- Comment with nested comments -->
-<script src="text/javascript">
-$('.reply-btn').click(function(){
-
-$(this).parent().next('.replied-comments').fadeToggle()
-})
-</script>
+{% empty %}
+<h4>There are no comments yet.</h4>
+{% endfor %}
     {% endblock %}

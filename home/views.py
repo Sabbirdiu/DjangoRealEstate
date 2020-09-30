@@ -31,8 +31,12 @@ def listing(request):
     paginator = Paginator(listings, 1)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
+    featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:3]
+    realtors = Realtor.objects.order_by('-hire_date')[:3]
     context = {
-        'listings':paged_listings
+        'listings':paged_listings,
+        'object_list':featured,
+        'realtors':realtors,
     }    
     return render(request, 'properties-list-left-sidebar.html', context)
 

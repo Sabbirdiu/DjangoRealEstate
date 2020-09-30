@@ -213,64 +213,43 @@
                         <h4 class="sidebar-title"><span class="text">Feature Property</span><span class="shape"></span></h4>
                         
                         <!--Sidebar Property start-->
+                        {% for listing in object_list %}
                         <div class="sidebar-property-list">
                             
                             <div class="sidebar-property">
                                 <div class="image">
-                                    <span class="type">For Rent</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/sidebar-property-1.jpg" alt=""></a>
+                                    <span class="type">{{listing.servicetype}}</span>
+                                    <a href="{{ listing.get_absolute_url }}"><img src="{{ listing.photo_main.url }}" alt=""></a>
                                 </div>
                                 <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Friuli-Venezia Giulia</a></h5>
-                                    <span class="location"><img src="assets/images/icons/marker.png" alt="">568 E 1st Ave, Miami</span>
-                                    <span class="price">$550 <span>Month</span></span>
+                                    <h5 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h5>
+                                    <span class="location"><img src="assets/images/icons/marker.png" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
+                                    <span class="price">${{ listing.price }} <span>{{ listing.rent_agreement }}</span></span>
                                 </div>
                             </div>
                             
-                            <div class="sidebar-property">
-                                <div class="image">
-                                    <span class="type">For Sale</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/sidebar-property-2.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Marvel de Villa</a></h5>
-                                    <span class="location"><img src="assets/images/icons/marker.png" alt="">450 E 1st Ave, New Jersey</span>
-                                    <span class="price">$2550</span>
-                                </div>
-                            </div>
-                            
-                            <div class="sidebar-property">
-                                <div class="image">
-                                    <span class="type">For Rent</span>
-                                    <a href="single-properties.html"><img src="assets/images/property/sidebar-property-3.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Ruposi Bangla Cottage</a></h5>
-                                    <span class="location"><img src="assets/images/icons/marker.png" alt="">215 L AH Rod, California</span>
-                                    <span class="price">$550 <span>Month</span></span>
-                                </div>
-                            </div>
+                         
                             
                         </div>
+                        {% endfor %}
                         <!--Sidebar Property end-->
                         
                     </div>
-                    
-                    <!--Sidebar start-->
-                    <div class="sidebar">
+                      <!--Sidebar start-->
+                      <div class="sidebar">
                         <h4 class="sidebar-title"><span class="text">Top Agents</span><span class="shape"></span></h4>
                         
                         <!--Sidebar Agents start-->
                         <div class="sidebar-agent-list">
-                            
+                            {% for realtor in realtors %}
                             <div class="sidebar-agent">
                                 <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/agent/agent-1.jpg" alt=""></a>
+                                    <a href="{{ realtor.get_absolute_url }}"><img src="{{ realtor.photo.url }}" alt=""></a>
                                 </div>
                                 <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Donald Palmer</a></h5>
-                                    <a href="#" class="phone">(756) 447 5779</a>
-                                    <span class="properties">5 Properties</span>
+                                    <h5 class="title"><a href="single-properties.html">{{ realtor.name }}</a></h5>
+                                    <a href="#" class="phone">{{ realtor.phone }}</a>
+                                    <!-- <span class="properties">5 Properties</span> -->
                                     <div class="social">
                                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -279,65 +258,16 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                             
-                            <div class="sidebar-agent">
-                                <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/agent/agent-2.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Sean Hamilton</a></h5>
-                                    <a href="#" class="phone">(756) 447 5779</a>
-                                    <span class="properties">5 Properties</span>
-                                    <div class="social">
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
                             
-                            <div class="sidebar-agent">
-                                <div class="image">
-                                    <a href="single-properties.html"><img src="assets/images/agent/agent-3.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="single-properties.html">Christine Gilbert</a></h5>
-                                    <a href="#" class="phone">(756) 447 5779</a>
-                                    <span class="properties">5 Properties</span>
-                                    <div class="social">
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="skype"><i class="fa fa-skype"></i></a>
-                                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </div>
-                                </div>
-                            </div>
                             
                         </div>
                         <!--Sidebar Agents end-->
                         
                     </div>
                     
-                    <!--Sidebar start-->
-                    <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Popular Tags</span><span class="shape"></span></h4>
-                        
-                        <!--Sidebar Tags start-->
-                        <div class="sidebar-tags">
-                            <a href="#">Houses</a>
-                            <a href="#">Real Home</a>
-                            <a href="#">Baths</a>
-                            <a href="#">Beds</a>
-                            <a href="#">Garages</a>
-                            <a href="#">Family</a>
-                            <a href="#">Real Estates</a>
-                            <a href="#">Properties</a>
-                            <a href="#">Location</a>
-                            <a href="#">Price</a>
-                        </div>
-                        <!--Sidebar Tags end-->
-                    
-                    </div>
+                  
             
                 </div>
                 
@@ -346,76 +276,6 @@
     </div>
     <!--New property section end-->
     
-    <!--Footer section start-->
-    <footer class="footer-section section" style="background-image: url(assets/images/bg/footer-bg.jpg)">
-       
-        <!--Footer Top start-->
-        <div class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-60 pb-lg-40 pb-md-30 pb-sm-20 pb-xs-10">
-            <div class="container">
-                <div class="row row-25">
-                    
-                    <!--Footer Widget start-->
-                    <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                       <img src="assets/images/logo4.jpg" style="height: 65px ;width: 100px;"  alt="">
-                        <p>Sabbirdk- Real Estateprofessional Templatethe best theme for elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit seddo dolor sit amet.</p>
-                        <div class="footer-social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="pinterest"><i class="fa fa-pinterest-p"></i></a>
-                        </div>
-                    </div>
-                    <!--Footer Widget end-->
-                    
-                    <!--Footer Widget start-->
-                    <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                        <h4 class="title"><span class="text">Contact us</span><span class="shape"></span></h4>
-                        <ul>
-                            <li><i class="fa fa-map-o"></i><span>Canada</span></li>
-                            <li><i class="fa fa-phone"></i><span><a href="#">+012 345 678 102</a><a href="#">+012 345 678 101</a></span></li>
-                            <li><i class="fa fa-envelope-o"></i><span><a href="#">info@example.com</a><a href="#">www.example.com</a></span></li>
-                        </ul>
-                    </div>
-                    <!--Footer Widget end-->
-                    
-                    <!--Footer Widget start-->
-                    <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                        <h4 class="title"><span class="text">Useful links</span><span class="shape"></span></h4>
-                        <ul>
-                            <li><a href="properties-list-left-sidebar.html">Rental Builidngs</a></li>
-                            <li><a href="about-us.html">About us</a></li>
-                            <li><a href="contact-us.html">Contact us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                       </ul>
-                    </div>
-                    <!--Footer Widget end-->    
-                    
-                    <!--Footer Widget start-->
-                    <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                        <h4 class="title"><span class="text">Newsletter</span><span class="shape"></span></h4>
-                        
-                        <p>Subscribe our newsletter and get all latest news about our latest properties, promotions, offers and discount</p>
-                        
-                        <form id="mc-form" class="mc-form footer-newsletter" >
-                            <input id="mc-email" type="email" autocomplete="off" placeholder="Email Here.." />
-                            <button id="mc-submit"><i class="fa fa-paper-plane-o"></i></button>
-                        </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts text-centre">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div><!-- mailchimp-alerts end -->
-                        
-                    </div>
-                    <!--Footer Widget end-->
-                    
-                </div>
-            </div>
-        </div>
-        <!--Footer Top end-->
-        
         
 </div>
 
