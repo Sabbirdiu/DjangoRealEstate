@@ -31,13 +31,14 @@
                         <li>or</li>
                         <li><a href="#register-tab" data-toggle="tab">Register</a></li>
                     </ul>
-                    
+                    {% include '_alerts.html' %}
                     <div class="tab-content">
                         <div id="login-tab" class="tab-pane show active">
-                            <form action="#">
+                            <form action="{% url 'login' %}" method="POST">
+                                {% csrf_token %}
                                 <div class="row">
-                                    <div class="col-12 mb-30"><input type="text" placeholder="User Name" required></div>
-                                    <div class="col-12 mb-30"><input type="password" placeholder="Password" required></div>
+                                    <div class="col-12 mb-30"><input type="text"  name="username" placeholder="User Name" required></div>
+                                    <div class="col-12 mb-30"><input type="password"  name="password" placeholder="Password" required></div>
                                     <div class="col-12 mb-30">
                                         <ul>
                                             <li><input type="checkbox" id="login_remember" required> <label for="login_remember">Remember me</label></li>
@@ -53,29 +54,26 @@
                             </form>
                         </div>
                         <div id="register-tab" class="tab-pane">
-                            <form action="#">
+                            <form action="{% url 'register' %}" method="POST">
+                                {% csrf_token %}
                                 <div class="row">
-                                    <div class="col-12 mb-30"><input type="text" placeholder="First Name" required></div>
-                                    <div class="col-12 mb-30"><input type="text" placeholder="Last Name" required></div>
-                                    <div class="col-12 mb-30"><input type="email" placeholder="Email" required></div>
-                                    <div class="col-12 mb-30"><input type="text" placeholder="User Name" required></div>
-                                    <div class="col-12 mb-30"><input type="password" placeholder="Password" required></div>
-                                    <div class="col-12 mb-30"><input type="password" placeholder="Confirm Password" required></div>
+                                    <div class="col-12 mb-30"><input name="first_name" type="text" placeholder="First Name" required></div>
+                                    <div class="col-12 mb-30"><input name="last_name" type="text" placeholder="Last Name" required></div>
+                                    <div class="col-12 mb-30"><input name="email" type="email" placeholder="Email" required></div>
+                                    <div class="col-12 mb-30"><input name="username" type="text" placeholder="User Name" required></div>
+                                    <div class="col-12 mb-30"><input name="password" type="password" placeholder="Password" required></div>
+                                    <div class="col-12 mb-30"><input name="password2" type="password" placeholder="Confirm Password" required></div>
                                     <div class="col-12 mb-30">
                                         <ul>
                                             <li><input type="checkbox" id="register_agree" required><label for="register_agree">I agree with your <a href="#">Terms & Conditions</a></label></li>
                                         </ul>
                                     </div>
-                                    <div class="col-12 mb-30">
-                                        <ul>
-                                            <li><input type="radio" name="account_type" id="register_normal" checked><label for="register_normal">Normal</label></li>
-                                            <li><input type="radio" name="account_type" id="register_agent"><label for="register_agent">Agent</label></li>
-                                            <li><input type="radio" name="account_type" id="register_agency"><label for="register_agency">Agency</label></li>
-                                        </ul>
+                                    
                                     </div>
                                     <div class="col-12"><button class="btn">Register</button></div>
+                                </form>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                     

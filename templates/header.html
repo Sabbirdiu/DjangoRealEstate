@@ -32,7 +32,9 @@
                                     <ul class="sub-menu">
                                         <li><a href="{% url 'about' %}">About us</a></li>
                                         <li><a href="{% url 'contact' %}">Contact us</a></li>
-                                        <li><a href="{% url 'log_reg' %}">Login & Register</a></li>
+                                        <li><a href="{% url 'log_reg' %}">LogReg</a></li>
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        <li><a href="{% url 'register' %}">Register</a></li>
                                         <li><a href="{% url 'account' %}">My Account</a></li>
                                     </ul>
                                 </li>
@@ -44,8 +46,9 @@
                     <!--User start-->
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
-                            <a href="{% url 'log_reg' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
+                            <a href="{% url 'register' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Register</span></a>
                         </div>
+                        
                     </div>
                     <!--User end-->
                 </div>

@@ -25,8 +25,14 @@ urlpatterns = [
     path('',include('home.urls')),
     path('news/',include('news.urls')),
     path('contact/',include('contact.urls')),
+
     path('about/',about,name='about'),
-    path('login-register/',log_reg,name='log_reg'),
+
+    path('loginreg/',log_reg,name='log_reg'),
+    path('register/',register,name='register'),
+    path('login/',login,name='login'),
+    path('dashboard/',dashboard,name='dashboard'),
+    path('logout/',logout,name='logout'),
     path('my-account/',myaccount,name='account'),
 
     

@@ -5,4 +5,6 @@ urlpatterns = [
     
     path('',contact,name='contact'),
 
+    
+
 ]
