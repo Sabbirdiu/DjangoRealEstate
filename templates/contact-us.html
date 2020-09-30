@@ -33,7 +33,7 @@
             </div>
             <!--Section Title end-->
             
-            <!-- <div class="row">
+            <div class="row">
                 
                 <div class="contact-form-wrap col-12">
                     <div class="contact-form">
@@ -51,18 +51,19 @@
                                 <div class="col-md-6 col-12 mb-30"><input name="phone" type="text" placeholder="Phone"></div>
                                 <div class="col-md-6 col-12 mb-30"><input name="subject" type="text" placeholder="Subject"></div>
                                 <div class="col-12 mb-30"><textarea name="message" placeholder="Message"></textarea></div>
-                                <div class="col-12 text-center"><button class="btn">submit</button></div>
+                                <div class="col-12 text-center"><button class="btn">submit</button></div> 
+                                
                             </div>
                         </form>
-                        <p class="form-messege"></p>
+                       
                     </div>
                 </div>
                 
-            </div> -->
+            </div> 
         </div>
     </div>
     <!--New property section end-->
-    <div class="modal-body">
+    <!-- <div class="modal-body">
         <form action="{% url 'contact' %}" method="POST">
           {% csrf_token %}
           {% if user.is_authenticated %}
@@ -94,5 +95,5 @@
           <hr>
           <input type="submit" value="Send" class="btn btn-block btn-secondary">
         </form>
-      </div>
+      </div> -->
   {% endblock %}
