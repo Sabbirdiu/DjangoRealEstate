@@ -1,5 +1,5 @@
-from django.shortcuts import render,get_object_or_404
-from .models import Realtor,Listing
+from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
+from .models import Realtor,Listing,Comment,CommentForm
 from news.models import Post
 from django.views.generic import DetailView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -42,18 +42,53 @@ def listing(request):
 
 
 def listingdetail(request, slug):
-  listing = get_object_or_404(Listing, slug=slug)
-  featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:3]
-  realtors = Realtor.objects.order_by('-hire_date')[:3]
+    post = get_object_or_404(Listing, slug=slug)
+    featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:3]
+    realtors = Realtor.objects.order_by('-hire_date')[:3]
+# list of active parent comments
+    comments = post.comments.filter(active=True, parent__isnull=True)
+    if request.method == 'POST':
+        # comment has been added
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            parent_obj = None
+            # get parent comment id from hidden input
+            try:
+                # id integer e.g. 15
+                parent_id = int(request.POST.get('parent_id'))
+            except:
+                parent_id = None
+            # if parent_id has been submitted get parent_obj id
+            if parent_id:
+                parent_obj = Comment.objects.get(id=parent_id)
+                # if parent object exist
+                if parent_obj:
+                    # create replay comment object
+                    replay_comment = comment_form.save(commit=False)
+                    # assign parent_obj to replay comment
+                    replay_comment.parent = parent_obj
+            # normal comment
+            # create comment object but do not save to database
+            new_comment = comment_form.save(commit=False)
+            # assign ship to the comment
+            new_comment.post = post
+            # save
+            new_comment.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+    else:
+        comment_form = CommentForm()
   
-  context = {
-    'listing': listing,
-    'object_list':featured,
-    'realtors':realtors,
-    
-  }
+    context = {
+        'listing': post,
+        'object_list':featured,
+        'realtors':realtors,
+        'comments': comments,
+        
+        'comment_form': comment_form,
+        
+    }
 
-  return render(request, 'single-properties.html', context)    
+    return render(request, 'single-properties.html', context)    
 def agents(request):
     realtor = Realtor.objects.order_by('-hire_date')
     paginator = Paginator(realtor, 1)

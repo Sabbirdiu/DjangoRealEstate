@@ -2,6 +2,25 @@
 {% load static %}
 
 {% block content %}
+{% load crispy_forms_tags %}
+<style>
+    .post-body img {
+      width: 100%;
+    }
+    /* comments */
+  .comment {
+      padding:10px;
+  }
+  .comment:nth-child(even) {
+      background:#efefef;
+  }
+  .comment .info {
+      font-weight:bold;
+      font-size:12px;
+      color:#666;
+  }  
+    
+  </style>
     
     <!--Page Banner Section start-->
     <div class="page-banner-section section" style="background-image: url({{ listing.photo_main.url }})">
@@ -107,72 +126,35 @@
                         <!--Property end-->
                         
                         <!--Comment start-->
-                        <div class="comment-wrap col-12">
-                            <h3>3 Feedback</h3>
-
-                            <ul class="comment-list">
-                                <li>
-                                    <div class="comment">
-                                        <div class="image"><img src="assets/images/review/review-1.jpg" alt=""></div>
-                                        <div class="content">
-                                            <h5>Alvaro Santos</h5>
-                                            <div class="d-flex flex-wrap justify-content-between">
-                                                <span class="time">10 August, 2020  |  10 Min ago</span>
-                                                <a href="#" class="reply">reply</a>
-                                            </div>
-                                            <div class="decs">
-                                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="child-comment">
-                                        <li>
-                                            <div class="comment">
-                                                <div class="image"><img src="assets/images/review/review-2.jpg" alt=""></div>
-                                                <div class="content">
-                                                    <h5>Silvia Anderson</h5>
-                                                    <div class="d-flex flex-wrap justify-content-between">
-                                                        <span class="time">10 August, 2020  |  25 Min ago</span>
-                                                        <a href="#" class="reply">reply</a>
-                                                    </div>
-                                                    <div class="decs">
-                                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="comment">
-                                        <div class="image"><img src="assets/images/review/review-3.jpg" alt=""></div>
-                                        <div class="content">
-                                            <h5>Nicolus Christopher</h5>
-                                            <div class="d-flex flex-wrap justify-content-between">
-                                                <span class="time">10 August, 2020  |  35 Min ago</span>
-                                                <a href="#" class="reply">reply</a>
-                                            </div>
-                                            <div class="decs">
-                                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and ising pain  borand I will give you a complete account of the system</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <h3>Leave a Feedback</h3>
-
-                            <div class="comment-form">
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mb-30"><input type="text" placeholder="Name"></div>
-                                        <div class="col-md-6 col-12 mb-30"><input type="email" placeholder="Email"></div>
-                                        <div class="col-12 mb-30"><textarea placeholder="Message"></textarea></div>
-                                        <div class="col-12"><button class="btn">send now</button></div>
-                                    </div>
-                                </form>
+                        <div class="comment-wrap section">
+                            {% with comments.count as total_comments %}
+                            <h2>
+                              {{ total_comments }} comment{{ total_comments|pluralize }}
+                            </h2>
+                            {% endwith %}
+                            {% for comment in comments %}
+                            <div class="comment">
+                              <p class="info">
+                                Comment {{ forloop.counter }} by {{ comment.name }}
+                                {{ comment.created }}
+                              </p>
+                            {{ comment.body|linebreaks }}
                             </div>
+                            {% empty %}
+                            <p>There are no comments yet.</p>
+                            {% endfor %}
                         
+                            {% if new_comment %}
+                            <h2>Your comment has been added.</h2>
+                            {% else %}
+                            <h2>Add a new comment</h2>
+                            <form  method="post">
+                                {{ comment_form | crispy }}
+                              {% csrf_token %}
+                              <p><input class="btn btn-outline-secondary my-5" type="submit" value="Submit"></p>
+                            </form>
+                            {% endif %}
+    
                         </div>
                         <!--Comment end-->
 
