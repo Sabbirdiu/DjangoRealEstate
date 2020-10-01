@@ -2,6 +2,24 @@
 {% load static %}
 
 {% block content %}
+<style>
+    .post-body img {
+      width: 100%;
+    }
+    /* comments */
+  .comment {
+      padding:10px;
+  }
+  .comment:nth-child(even) {
+      background:#efefef;
+  }
+  .comment .info {
+      font-weight:bold;
+      font-size:12px;
+      color:#666;
+  }  
+    
+  </style>
     
     <!--Page Banner Section start-->
     <div class="page-banner-section section">
@@ -47,73 +65,36 @@
                     </div>
                         
                     <!--Comment start-->
-                    <!-- <div class="comment-wrap section">
-                        <h3> Total Comments {{comments.count}}</h3>
+                    <div class="comment-wrap section">
+                        {% with comments.count as total_comments %}
+                        <h2>
+                          {{ total_comments }} comment{{ total_comments|pluralize }}
+                        </h2>
+                        {% endwith %}
                         {% for comment in comments %}
-                        <ul class="comment-list">
-                            <li>
-                                <div class="comment">
-                                   
-                                    <div class="content">
-                                        <h5>{{ comment.name }}  </h5>
-                                        <div class="d-flex flex-wrap justify-content-between">
-                                            <span class="time">{{ comment.created }}</span>
-                                            <a href="#" class="reply">reply</a>
-                                            <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button>
-                                        </div>
-                                        <div class="decs">
-                                            <p>{{ comment.body|linebreaks }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% for replay in comment.replies.all %}
-                                <ul class="child-comment">
-                                    <li>
-                                        <div class="comment">
-                                           
-                                            <div class="content">
-                                                <h5>{{ replay.name }} </h5>
-                                                <div class="d-flex flex-wrap justify-content-between">
-                                                    <span class="time"> {{ replay.created }}</span>
-                                                
-                                                    <button id="formButton" type="button" name="button" class="reply-btn reply button btn-outline-dark btn-sm" >Reply</button>
-                                                </div>
-                                                <div class="decs replied-comments">
-                                                    <p>{{ replay.body }}</p>
-                                                    <form action="." method="post" id="form1">
-                                                        {{ comment_form.as_p }}
-                                                        {% csrf_token %}
-                                                       
-                                                       <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                                       <input class="  btn btn-primary" type="button" name="button" value="Replay">
-                                                   </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                {% endfor %}
-                            </li>
-                           
-                        </ul> 
-                        {% empty %}
-                   
-                        <h4>There are no comments yet.</h4>
-                        {% endfor %}
-                      
-                        <h3>Add a Comment</h3>
-
-                        <div class="comment-form">
-                            <form action="." method="POST">
-                                <div class="">
-                                    {{ comment_form.as_p }}
-                                    {% csrf_token %}
-                                    <div class="col-12"><button type="submit" class="btn">send now</button></div>
-                                </div>
-                            </form>
+                        <div class="comment">
+                          <p class="info">
+                            Comment {{ forloop.counter }} by {{ comment.name }}
+                            {{ comment.created }}
+                          </p>
+                        {{ comment.body|linebreaks }}
                         </div>
+                        {% empty %}
+                        <p>There are no comments yet.</p>
+                        {% endfor %}
+                    
+                        {% if new_comment %}
+                        <h2>Your comment has been added.</h2>
+                        {% else %}
+                        <h2>Add a new comment</h2>
+                        <form  method="post">
+                            {{ comment_form.as_p }}
+                          {% csrf_token %}
+                          <p><input class="btn btn-outline-secondary" type="submit" value="Submit"></p>
+                        </form>
+                        {% endif %}
 
-                    </div> -->
+                    </div>
                     <!--Comment end-->
                     
                 </div>
@@ -234,35 +215,4 @@
             </div>
         </div>
     </div>
-<!-- Comments Form --> 
-<h2>Add a new comment</h2>
-<form action="." method="post">
-    {{ comment_form.as_p }}
-    {% csrf_token %}
-    <button type="submit">Add comment</button>
-</form>
-
-<!-- Comment with nested comments -->
-{% for comment in comments %}
-    <div class="comment" style="background-color: ">
-        <p class="info">{{ comment.name }} | {{ comment.created }}</p>
-            {{ comment.body|linebreaks }}
-
-        {% for replay in comment.replies.all %}
-            <p class="info">{{ replay.name }} | {{ replay.created }}</p>
-            <li>{{ replay.body }}</li>
-        {% endfor %}
-
-        <h5>Replay</h5>
-        <form action="." method="post">
-            {{ comment_form.as_p }}
-            {% csrf_token %}
-            <!-- Hidden input for parent comment.id -->
-            <input type="hidden" name="parent_id" value="{{ comment.id }}">
-            <input class="btn btn-primary" type="submit" value="Replay">
-        </form>
-    </div>
-{% empty %}
-<h4>There are no comments yet.</h4>
-{% endfor %}
     {% endblock %}

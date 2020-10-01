@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'contact',
     'ckeditor',
     'ckeditor_uploader',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,4 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
