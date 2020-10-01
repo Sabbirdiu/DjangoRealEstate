@@ -3,6 +3,12 @@
 {% block title %} | Register Account {% endblock %}
 
 {% block content %}
+<script>
+        
+    setTimeout(function(){
+        $('#message').fadeOut('slow')
+    },1000)
+        </script>
 <div class="page-banner-section section">
   <div class="container">
       <div class="row">
@@ -23,9 +29,10 @@
             <div class="col-lg-6 col-md-8 col-12 ml-auto mr-auto">
                 
               {% include 'reg_partial.html' %}
-                
+              
                 <div class="tab-content">
                     <div >
+                        {% include '_alerts.html' %}
                         <form action="{% url 'register' %}" method="POST">
                           {% csrf_token %}
                             <div class="row">
