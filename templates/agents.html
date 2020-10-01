@@ -51,17 +51,37 @@
             {% endif %}    
             </div>
             
+           
             <div class="row mt-20">
                 <div class="col">
+                    {% if realtors.has_other_pages %}
                     <ul class="page-pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i> Prev</a></li>
-                        <li class="active"><a href="#">01</a></li>
-                        <li><a href="#">02</a></li>
-                        <li><a href="#">03</a></li>
-                        <li><a href="#">04</a></li>
-                        <li><a href="#">05</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Next</a></li>
+                        {% if realtors.has_previous %}
+                        <li><a href="?page={{realtors.previous_page_number}}"><i class="fa fa-angle-left"></i> Prev</a></li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a href=""><i class="fa fa-angle-left"></i> Prev</a>
+                        </li>
+                        {% endif %}
+                        {% for i in realtors.paginator.page_range %}
+                           {% if realtors.number == i %}
+                           <li class="page-item active"><a href="page-link">{{i}}</a></li>
+                           {% else %}
+                           <li class="page-item">
+                            <a href="?page={{i}}" class="page-link">{{i}}</a>
+                          </li>
+                          {% endif %}
+                        {% endfor %}  
+                        {% if realtors.has_next %}
+                        <li><a href="?page={{realtors.next_page_number}}"><i class="fa fa-angle-right"></i> Next</a></li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a href=""><i class="fa fa-angle-right"></i> Next</a>
+                        </li>
+                        {% endif %}
+                        <!-- <li><a href="#"><i class="fa fa-angle-right"></i> Next</a></li> -->
                     </ul>
+                    {% endif %}
                 </div>
             </div>
             

@@ -55,7 +55,10 @@ def listingdetail(request, slug):
 
   return render(request, 'single-properties.html', context)    
 def agents(request):
-    realtors = Realtor.objects.order_by('-hire_date')
+    realtor = Realtor.objects.order_by('-hire_date')
+    paginator = Paginator(realtor, 1)
+    page = request.GET.get('page')
+    realtors = paginator.get_page(page)
     context = {
         'realtors': realtors,   
     } 
