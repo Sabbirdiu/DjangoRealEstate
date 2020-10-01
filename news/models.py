@@ -6,6 +6,7 @@ from ckeditor.fields import  RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.forms import ModelForm
 from django import forms
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Author(models.Model):
@@ -18,6 +19,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField()
+    tags = TaggableManager(blank=True)
     overview = RichTextField(null=True,blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)

@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     </div>
+                  
                     
                     <div class="news-navigation mb-50">
                        
@@ -114,7 +115,7 @@
                         <form  method="post">
                             {{ comment_form | crispy }}
                           {% csrf_token %}
-                          <p><input class="btn btn-outline-secondary" type="submit" value="Submit"></p>
+                          <p><input class="btn btn-outline-secondary my-5" type="submit" value="Submit"></p>
                         </form>
                         {% endif %}
 
@@ -125,72 +126,26 @@
                 
                 <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 pr-30 pr-sm-15 pr-xs-15">
                     
-                    <!--Sidebar start-->
-                    <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Search</span><span class="shape"></span></h4>
-                        
-                        <div class="sidebar-search">
-                            <form action="#">
-                                <input type="text" placeholder="Search">
-                                <button><i class="pe-7s-search"></i></button>
-                            </form>
-                        </div>
-                        
-                    </div>
-                    <!--Sidebar end-->
+                   
                     
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Categiry</span><span class="shape"></span></h4>
-                        
-                        <ul class="sidebar-list">
-                            <li><a href="#">Houses</a></li>
-                            <li><a href="#">Real Home</a></li>
-                            <li><a href="#">Garages</a></li>
-                            <li><a href="#">Real Estates</a></li>
-                            <li><a href="#">Properties</a></li>
-                            <li><a href="#">Family House</a></li>
-                        </ul>
-                        
-                    </div>
-                    <!--Sidebar end-->
-                    
-                    <!--Sidebar start-->
-                    <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Popular News</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text">Recent News</span><span class="shape"></span></h4>
                         
                         <!--Sidebar Property start-->
                         <div class="sidebar-news-list">
-                            
+                            {% for obj in news_object_list %}
                             <div class="sidebar-news">
                                 <div class="image">
-                                    <a href="news-details.html"><img src="assets/images/news/sidebar-news-1.jpg" alt=""></a>
+                                    <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.photo_main.url }}" alt=""></a>
                                 </div>
                                 <div class="content">
-                                    <h5 class="title"><a href="news-details.html">Duplex Villa with Altra Concept</a></h5>
-                                    <span class="date">September 30, 2020</span>
+                                    <h5 class="title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h5>
+                                    <span class="date">{{ obj.timestamp|date:"F d, Y" }}</span>
                                 </div>
                             </div>
-                            
-                            <div class="sidebar-news">
-                                <div class="image">
-                                    <a href="news-details.html"><img src="assets/images/news/sidebar-news-2.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="news-details.html">Joint Mortgage: Pros vs. Cons</a></h5>
-                                    <span class="date">September 30, 2020</span>
-                                </div>
-                            </div>
-                            
-                            <div class="sidebar-news">
-                                <div class="image">
-                                    <a href="news-details.html"><img src="assets/images/news/sidebar-news-3.jpg" alt=""></a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="news-details.html">Dealing with Student Loan Debt</a></h5>
-                                    <span class="date">September 30, 2020</span>
-                                </div>
-                            </div>
+                            {% endfor %}
+                           
                             
                         </div>
                         <!--Sidebar Property end-->
@@ -198,42 +153,17 @@
                     </div>
                     
                     <!--Sidebar start-->
-                    <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Archive</span><span class="shape"></span></h4>
-                        
-                        <ul class="sidebar-list">
-                            <li><a href="#">October 2020</a></li>
-                            <li><a href="#">September 2020</a></li>
-                            <li><a href="#">August 2020</a></li>
-                            <li><a href="#">July 2020</a></li>
-                            <li><a href="#">Jun 2020</a></li>
-                            <li><a href="#">May 2020</a></li>
-                        </ul>
-                        
-                    </div>
+                   
                     <!--Sidebar end-->
-                    
                     <!--Sidebar start-->
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h4 class="sidebar-title"><span class="text">Popular Tags</span><span class="shape"></span></h4>
-                        
+                         -->
                         <!--Sidebar Tags start-->
-                        <div class="sidebar-tags">
-                            <a href="#">Houses</a>
-                            <a href="#">Real Home</a>
-                            <a href="#">Baths</a>
-                            <a href="#">Beds</a>
-                            <a href="#">Garages</a>
-                            <a href="#">Family</a>
-                            <a href="#">Real Estates</a>
-                            <a href="#">Properties</a>
-                            <a href="#">Location</a>
-                            <a href="#">Price</a>
-                        </div>
+                       
                         <!--Sidebar Tags end-->
                     
-                    </div>
-            
+                  
                 </div>
                 
             </div>

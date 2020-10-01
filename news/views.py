@@ -1,6 +1,8 @@
 from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
 from .models import Post,Comment,CommentForm
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from taggit.models import Tag
+from django.template.defaultfilters import slugify
 # Create your views here.
 def post(request):
     post_list = Post.objects.order_by('-timestamp')
@@ -25,6 +27,9 @@ def post(request):
 def newsdetails(request,slug):
     # get post object
     post = get_object_or_404(Post,  slug=slug)
+    news_featured = Post.objects.filter(featured=True).order_by('-timestamp')[0:4]
+    posts = Post.objects.all()
+   
     # list of active parent comments
     comments = post.comments.filter(active=True, parent__isnull=True)
     if request.method == 'POST':
@@ -60,5 +65,18 @@ def newsdetails(request,slug):
     return render(request,
                   'news-details.html',
                   {'obj': post,
+                  'news_object_list':news_featured,
                    'comments': comments,
+                   'posts':posts,
+                  
                    'comment_form': comment_form})
+# def tagged(request, slug):
+#     tag = get_object_or_404(Tag, slug=slug) 
+#     common_tags = Post.tags.most_common()[:4]
+#     posts = Post.objects.filter(tags=tag)
+#     context = {
+#         'tag':tag,
+#         'common_tags':common_tags,
+#         'posts':posts,
+#     }
+#     return render(request, 'news_tag.html', context)                   

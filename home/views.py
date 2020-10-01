@@ -43,9 +43,13 @@ def listing(request):
 
 def listingdetail(request, slug):
   listing = get_object_or_404(Listing, slug=slug)
+  featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:3]
+  realtors = Realtor.objects.order_by('-hire_date')[:3]
   
   context = {
     'listing': listing,
+    'object_list':featured,
+    'realtors':realtors,
     
   }
 
