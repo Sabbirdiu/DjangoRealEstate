@@ -23,6 +23,10 @@ class Post(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     featured = models.BooleanField()
+    previous_post = models.ForeignKey(
+        'self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
+    next_post = models.ForeignKey(
+        'self', related_name='next', on_delete=models.SET_NULL, blank=True, null=True)
     def __str__(self):
         return self.title
 

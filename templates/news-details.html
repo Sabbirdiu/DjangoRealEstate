@@ -60,8 +60,31 @@
                     </div>
                     
                     <div class="news-navigation mb-50">
-                        <a href="#" class="prev-blog"><i class="fa fa-long-arrow-left"></i>Previous</a>
-                        <a href="#" class="next-blog"><i class="fa fa-long-arrow-right"></i>Next</a>
+                       
+                        {% if obj.previous_post %}
+                        <a
+                          href="{{ obj.previous_post.get_absolute_url }}"
+                          class=" prev-blog prev-post text-left d-flex align-items-center"
+                        >
+                          <div class="icon prev"><i class="fa fa-angle-left"></i></div>
+                          <div class="text">
+                            <strong class="text-primary">Previous Post </strong>
+                            <h6>{{ obj.previous_post.title }}</h6>
+                          </div>
+                        </a>
+                        {% endif %} 
+                        {% if obj.next_post %}
+                        <a
+                          href="{{ obj.next_post.get_absolute_url }}"
+                          class="next-post next-blog text-right d-flex align-items-center justify-content-end"
+                        >
+                          <div class="text">
+                            <strong class="text-primary">Next Post </strong>
+                            <h6>{{ obj.next_post.title }}</h6>
+                          </div>
+                          <div class="icon next"><i class="fa fa-angle-right"> </i></div>
+                        </a>
+                        {% endif %}
                     </div>
                         
                     <!--Comment start-->
@@ -215,4 +238,5 @@
             </div>
         </div>
     </div>
+
     {% endblock %}
