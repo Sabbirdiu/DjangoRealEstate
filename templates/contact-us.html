@@ -28,6 +28,7 @@
                 <div class="col-md-12 mb-60 mb-xs-30">
                     <div class="section-title center">
                         <h1>Leave a Message</h1>
+                        {% include '_alerts.html' %}
                     </div>
                 </div>
             </div>
@@ -37,6 +38,7 @@
                 
                 <div class="contact-form-wrap col-12">
                     <div class="contact-form">
+                        
                         <form id="contact-form" method="POST" action="{% url 'contact' %}">
                             <div class="row">
                                 {% if user.is_authenticated %}

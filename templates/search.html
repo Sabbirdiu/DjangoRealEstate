@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!--Search Section section start-->
+  <div class="search-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+    <div class="container">
+        
+        <!--Section Title start-->
+        <div class="row">
+            <div class="col-md-12 mb-60 mb-xs-30">
+                <div class="section-title center">
+                    <h1>Find Your Home</h1>
+                </div>
+            </div>
+        </div>
+        <!--Section Title end-->
+        
+        <div class="row">
+            <div class="col">
+                
+                <!--Property Search start-->
+                <div class="property-search">
+
+                    <form action="{% url 'search' %}">
+
+                        <div>
+                            <input type="text"  name="keywords" placeholder="Keywords(Pool, Garage, etc)">
+                        </div>
+
+                        <div>
+                            <select  name="state" class="nice-select">
+                                <option selected="true" disabled="disabled" >All States</option>
+                                {% for key,value in state_choices.items %}
+                                <option value="{{key}}">{{value}}</option>
+                                {% endfor %}
+                             
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" name="city" placeholder="City">
+                        </div>
+                        <div>
+                            <select  name="types" class="nice-select">
+                                <option selected="true" disabled="disabled"  value="">Type</option>
+                                {% for key,value in type_choices.items %}
+                                <option value="{{key}}">{{value}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                      
+
+                        <div>
+                            <select name="bedrooms" class="nice-select">
+                                <option selected="true" disabled="disabled" >Bedrooms</option>
+                                {% for key,value in bedroom_choices.items %}
+                                <option value="{{key}}">{{value}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <select name="bathrooms" class="nice-select">
+                                <option selected="true" disabled="disabled" >Bathrooms</option>
+                                {% for key,value in bathroom_choices.items %}
+                                <option value="{{key}}">{{value}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <select class="nice-select">
+                                <option selected="true" disabled="disabled"   >Max Price</option>
+                                {% for key,value in price_choices.items %}
+                                <option value="{{key}}">{{value}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <button>search</button>
+                        </div>
+
+                    </form>
+
+                </div>
+                <!--Property Search end-->
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!--Search Section section end-->
+
+    <!--New property section start-->
+    <div class="property-section section pb-60 pb-lg-40 pb-md-30 pb-sm-20 pb-xs-10">
+        <div class="container">
+           
+            <!--Section Title start-->
+            <div class="row">
+                <div class="col-md-12 mb-60 mb-xs-30">
+                    <div class="section-title center">
+                        <h1>Newly Added Property</h1>
+                    </div>
+                </div>
+            </div>
+            <!--Section Title end-->
+            
+           <div class="row">
+               
+                <!--Property start-->
+                {% if listings %} 
+                {% for listing in listings %}
+                <div class="property-item col-lg-4 col-md-6 col-12 mb-40">
+                    <div class="property-inner">
+                        <div class="image">
+                            <a href="{{ listing.get_absolute_url }}"><img src="{{ listing.photo_main.url }}" alt=""></a>
+                            <ul class="property-feature">
+                                <li>
+                                    <span class="area"><img src="{% static 'images/icons/area.png' %}" alt="">{{ listing.sqft }} SqFt</span>
+                                </li>
+                                <li>
+                                    <span class="bed"><img src="{% static 'images/icons/bed.png' %}" alt="">{{ listing.bedrooms }}</span>
+                                </li>
+                                <li>
+                                    <span class="bath"><img src="{% static 'images/icons/bath.png' %}" alt="">{{ listing.bathrooms }}</span>
+                                </li>
+                                <li>
+                                    <span class="parking"><img src="{% static 'images/icons/parking.png' %}" alt="">{{ listing.garage }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            <div class="left">
+                                <h3 class="title"><a href="{{ listing.get_absolute_url }}">{{ listing.title }}</a></h3>
+                                <span class="location"><img src="{% static 'images/icons/marker.png' %}" alt="">{{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</span>
+                            </div>
+                            <div class="right">
+                                <div class="type-wrap">
+                                    <span class="price">${{ listing.price }}<span>{{ listing.rent_agreement }}</span></span>
+                                    <span class="type">{{listing.servicetype}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-md-12">
+                    <p>No Listings Available</p>
+                </div>
+                {% endif %}
+                <!--Property end-->
+                 
+            </div>
+            
+        </div>
+    </div>
+    <!--New property section end-->
+
+{% endblock %}

@@ -4,6 +4,7 @@ from news.models import Post
 from django.views.generic import DetailView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from contact.models import Partnars
+from .choices import bedroom_choices,bathroom_choices,price_choices,state_choices,type_choices
 # Create your views here.
 def index(request):
     featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:6]
@@ -20,7 +21,12 @@ def index(request):
         'products_slider':products_slider,
         'service_slider':service_slider,
         'news_object_list':news_featured,
-        'partnar':partnar
+        'partnar':partnar,
+        'bedroom_choices':bedroom_choices,
+        'bathroom_choices':bathroom_choices,
+        'price_choices':price_choices,
+        'state_choices':state_choices,
+        'type_choices':type_choices
        
     }
      
@@ -102,3 +108,45 @@ class AgentDetailView(DetailView):
     model = Realtor  
     template_name = 'agent-details.html'        
 
+def search(request):
+    queryset_list = Listing.objects.order_by('-list_date')
+    # latest = Listing.objects.order_by('-list_date')[0:6]
+    if 'keywords' in request.GET:
+      keywords = request.GET['keywords']
+      if keywords:
+        queryset_list = queryset_list.filter(description__icontains=keywords)
+  # City
+    if 'city' in request.GET:
+        city = request.GET['city']
+        if city:
+            queryset_list = queryset_list.filter(city__iexact=city)  
+  # State
+    if 'state' in request.GET:
+        state = request.GET['state']
+        if state:
+           queryset_list = queryset_list.filter(state__iexact=state)   
+    # Bedrooms
+    if 'bedrooms' in request.GET:
+        bedrooms = request.GET['bedrooms']
+        if bedrooms:
+           queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)        
+    # Bathrooms
+    if 'bathrooms' in request.GET:
+        bathrooms = request.GET['bathrooms']
+        if bathrooms:
+           queryset_list = queryset_list.filter(bathrooms__lte=bathrooms)      
+    # Types
+    if 'types' in request.GET:
+        types = request.GET['types']
+        if types:
+           queryset_list = queryset_list.filter(type__lte=types)                                
+
+    context={
+    'bedroom_choices':bedroom_choices,
+    'bathroom_choices':bathroom_choices,
+    'price_choices':price_choices,
+    'state_choices':state_choices,
+    'type_choices':type_choices,
+    'listings':queryset_list
+    }
+    return render(request,'search.html',context)

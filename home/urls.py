@@ -7,4 +7,5 @@ urlpatterns = [
     path('agents/<slug:slug>/',AgentDetailView.as_view(),name ='agent-details'),
     path('listings/',listing,name='listings' ),
     path('listing/<slug:slug>/',listingdetail, name='listing' ),
+    path('search/',search,name='search' ),
 ]
