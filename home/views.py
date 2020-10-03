@@ -43,6 +43,10 @@ def listing(request):
         'listings':paged_listings,
         'object_list':featured,
         'realtors':realtors,
+        'bedroom_choices':bedroom_choices,
+        'bathroom_choices':bathroom_choices,
+        'price_choices':price_choices,
+        'state_choices':state_choices,
     }    
     return render(request, 'properties-list-left-sidebar.html', context)
 

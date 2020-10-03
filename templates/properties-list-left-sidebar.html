@@ -116,90 +116,56 @@
                         <!--Property Search start-->
                         <div class="property-search sidebar-property-search">
 
-                            <form action="#">
+                            <form action="{% url 'search' %}">
 
                                 <div>
-                                    <input type="text" placeholder="Location">
+                                    <input type="text"  name="keywords" placeholder="Keywords(Pool, Garage, etc)">
                                 </div>
-
+        
                                 <div>
-                                    <select class="nice-select">
-                                        <option>All Cities</option>
-                                        <option>Athina</option>
-                                        <option>Austin</option>
-                                        <option>Baytown</option>
-                                        <option>Brampton</option>
-                                        <option>Cedar Hill</option>
-                                        <option>Chester</option>
-                                        <option>Chicago</option>
-                                        <option>Coleman</option>
-                                        <option>Corpus Christi</option>
-                                        <option>Dallas</option>
-                                        <option>distrito federal</option>
-                                        <option>Fayetteville</option>
-                                        <option>Galveston</option>
-                                        <option>Jersey City</option>
-                                        <option>Los Angeles</option>
-                                        <option>Midland</option>
-                                        <option>New York</option>
-                                        <option>Odessa</option>
-                                        <option>Reno</option>
-                                        <option>San Angelo</option>
-                                        <option>San Antonio</option>
+                                    <select  name="state" class="nice-select">
+                                        <option selected="true" disabled="disabled" >All States</option>
+                                        {% for key,value in state_choices.items %}
+                                        <option value="{{key}}">{{value}}</option>
+                                        {% endfor %}
+                                     
                                     </select>
                                 </div>
-
                                 <div>
-                                    <select class="nice-select">
-                                        <option>For Rent</option>
-                                        <option>For Sale</option>
+                                    <input type="text" name="city" placeholder="City">
+                                </div>
+                               
+                                <div>
+                                    <select name="bedrooms" class="nice-select">
+                                        <option selected="true" disabled="disabled" >Bedrooms</option>
+                                        {% for key,value in bedroom_choices.items %}
+                                        <option value="{{key}}">{{value}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
-
+        
                                 <div>
-                                    <select class="nice-select">
-                                        <option>Type</option>
-                                        <option>Apartment</option>
-                                        <option>Cafe</option>
-                                        <option>House</option>
-                                        <option>Restaurant</option>
-                                        <option>Store</option>
-                                        <option>Villa</option>
+                                    <select name="bathrooms" class="nice-select">
+                                        <option selected="true" disabled="disabled" >Bathrooms</option>
+                                        {% for key,value in bathroom_choices.items %}
+                                        <option value="{{key}}">{{value}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
-
+        
                                 <div>
-                                    <select class="nice-select">
-                                        <option>Bedrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                    <select name="price" id="type" class="nice-select">
+                                        <option selected="true" disabled="disabled">Max Price</option>
+                                        {% for key,value in price_choices.items %}
+                                        <option value="{{key}}">{{value}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>Bathrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <div id="search-price-range"></div>
-                                </div>
-
+        
                                 <div>
                                     <button>search</button>
                                 </div>
-
+        
                             </form>
 
                         </div>
