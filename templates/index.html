@@ -102,14 +102,7 @@
                             <div>
                                 <input type="text" name="city" placeholder="City">
                             </div>
-                            <div>
-                                <select name="types" class="nice-select">
-                                    <option selected="true" disabled="disabled"  value="">Type</option>
-                                    {% for key,value in type_choices.items %}
-                                    <option value="{{key}}">{{value}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
+                           
 
                           
 
@@ -132,8 +125,8 @@
                             </div>
 
                             <div>
-                                <select class="nice-select">
-                                    <option selected="true" disabled="disabled"   >Max Price</option>
+                                <select name="price"  class="nice-select" id="type">
+                                    <option selected="true" disabled="disabled">Max Price</option>
                                     {% for key,value in price_choices.items %}
                                     <option value="{{key}}">{{value}}</option>
                                     {% endfor %}
@@ -453,7 +446,7 @@
                 <div class="property-item col-lg-4 col-md-6 col-12 mb-40">
                     <div class="property-inner">
                         <div class="image">
-                            <a href="{{ listing.get_absolute_url }}"><img src="{{ listing.photo_main.url }}" alt=""></a>
+                            <a href="{{ listing.get_absolute_url }}"><img style="height: 280px;width: 420px;" src="{{ listing.photo_main.url }}" alt=""></a>
                             <ul class="property-feature">
                                 <li>
                                     <span class="area"><img src="{% static 'images/icons/area.png' %}" alt="">{{ listing.sqft }} SqFt</span>

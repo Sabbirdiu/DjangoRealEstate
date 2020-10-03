@@ -135,11 +135,17 @@ def search(request):
         bathrooms = request.GET['bathrooms']
         if bathrooms:
            queryset_list = queryset_list.filter(bathrooms__lte=bathrooms)      
-    # Types
-    if 'types' in request.GET:
-        types = request.GET['types']
-        if types:
-           queryset_list = queryset_list.filter(type__lte=types)                                
+    # # Types
+    # if 'types' in request.GET:
+    #     types = request.GET['types']
+    #     if types:
+    #        queryset_list = queryset_list.filter(type__iexact=types)                                
+  # Price
+    if 'price' in request.GET:
+        price = request.GET['price']
+        if price:
+           queryset_list = queryset_list.filter(price__lte=price)
+
 
     context={
     'bedroom_choices':bedroom_choices,

@@ -147,7 +147,7 @@ def profile(request):
 
 
 def edit_profile(request):
-    # context = {}
+      context = {}
     # check = register_table.objects.filter(user__id=request.user.id)
     # if len(check)>0:
     #     data = register_table.objects.get(user__id=request.user.id)
@@ -155,13 +155,13 @@ def edit_profile(request):
       if request.method=="POST":
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        username = request.POST['username']
+        # username = request.POST['username']
         email = request.POST['email']
 
         user = User.objects.get(id=request.user.id)
         user.first_name = first_name
         user.last_name = last_name
-        user.username = username
+        # user.username = username
         user.email = email
         user.save()
 

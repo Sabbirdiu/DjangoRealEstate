@@ -48,23 +48,23 @@ price_choices = {
 
 state_choices = {
        
-        'Ab':'Alberta',
-        'Bc':'British Columbia',
-        'Mt':'Manitoba',
-        'Nb':'New Brunswick',
-        'Nf':'Newfoundland', 
-        'Lr':'Labrador',
-        'Nt':'Northwest Territories',
-        'Ns':'Nova Scotia',
-        'Na':'Nunavut',
-        'Ot':'Ontario',
-        'Pei':'Prince Edward Island',
-        'Qb':'Quebec',
-        'Sk':'Saskatchewan',
-        'Yk':'Yukon',
+        'Alberta':'Alberta',
+        'British Columbia':'British Columbia',
+        'Manitoba':'Manitoba',
+        'New Brunswick':'New Brunswick',
+        'Newfoundland':'Newfoundland', 
+        'Labrador':'Labrador',
+        'Northwest Territories':'Northwest Territories',
+        'Nova Scotia':'Nova Scotia',
+        'Nunavut':'Nunavut',
+        'Ontario':'Ontario',
+        'Prince Edward Island':'Prince Edward Island',
+        'Quebec':'Quebec',
+        'Saskatchewan':'Saskatchewan',
+        'Yukon':'Yukon',
        
 }
 type_choices = {
-      'Rent': 'For Rent',
-      'Sale': 'For Sale'
+      'For Rent': 'For Rent',
+      'For Sale': 'For Sale'
 }

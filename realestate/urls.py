@@ -33,7 +33,7 @@ urlpatterns = [
     path('login/',login,name='login'),
     path('dashboard/',dashboard,name='dashboard'),
     path('logout/',logout,name='logout'),
-    path('my-account/',myaccount,name='account'),
+    path('my-account/',edit_profile,name='account'),
 
     
   
