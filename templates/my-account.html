@@ -3,6 +3,12 @@
 {% load static %}
 
 {% block content %}
+   <script>
+        
+    setTimeout(function(){
+        $('#message').fadeOut('slow')
+    },3000)
+    </script>
     
     <!--Page Banner Section start-->
     <div class="page-banner-section section">
@@ -34,6 +40,7 @@
                             <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <fieldset class="form-group">
+                                    {% include '_alerts.html' %}
                                   <legend class="border-bottom mb-4">Profile Info</legend>
                                   {{ u_form|crispy }} {{ p_form|crispy }}
                                 </fieldset>

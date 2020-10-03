@@ -57,7 +57,7 @@ def contact(request):
     #   fail_silently=False
     # )
 
-    messages.success(request, 'Your request has been submitted')
+    messages.success(request, 'Your reqmessage  has been submitted')
     return redirect('contact')
 
   return render(request,'contact-us.html')
@@ -115,8 +115,8 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
       auth.logout(request)
-      # messages.success(request, 'You are now logged out')
-      return redirect('home')        
+      messages.success(request, 'You are now logged out')
+      return redirect('login')        
 def myaccount(request):
     return render(request,'my-account.html')            
 @login_required

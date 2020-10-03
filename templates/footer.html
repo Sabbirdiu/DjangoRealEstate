@@ -13,7 +13,7 @@
                     
                 
                 <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                   <img src="assets/images/logo4.jpg" style="height: 65px ;width: 100px;"  alt="">
+                   <img src="{% static 'images/logo4.jpg' %}" style="height: 65px ;width: 100px;"  alt="">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
                     <div class="footer-social">
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -40,10 +40,10 @@
                 <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
                     <h4 class="title"><span class="text">Useful links</span><span class="shape"></span></h4>
                     <ul>
-                        <li><a href="properties-list-left-sidebar.html">Rental Builidngs</a></li>
-                        <li><a href="about-us.html">About us</a></li>
-                        <li><a href="contact-us.html">Contact us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{% url 'listings' %}">Rental Builidngs</a></li>
+                        <li><a href="{% url 'about' %}">About us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact us</a></li>
+                       
                    </ul>
                 </div>
                 <!--Footer Widget end-->    
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright text-center">
-                        <p>Copyright &copy;2020 <a  href="#">Sabbirdk</a>. All rights reserved.</p>
+                        <p>Copyright &copy;{% now 'Y' %}, <a  target="_blank"  href="https://www.fiverr.com/sabbirdk/create-and-develop-your-python-django-web-applications-asap">Sabbirdk</a>. All rights reserved.</p>
                     </div>
                 </div>
             </div>

@@ -24,27 +24,35 @@
                     <form action="{% url 'search' %}">
 
                         <div>
-                            <input type="text"  name="keywords" placeholder="Keywords(Pool, Garage, etc)">
+                            <input type="text"  name="keywords" placeholder="Keywords(Pool, Garage, etc)" value="{{ values.keywords }}">
                         </div>
 
                         <div>
                             <select  name="state" class="nice-select">
                                 <option selected="true" disabled="disabled" >All States</option>
                                 {% for key,value in state_choices.items %}
-                                <option value="{{key}}">{{value}}</option>
+                                <option
+                                {% if key == values.state %}
+                                selected
+                                {% endif %}
+                                 value="{{key}}">{{value}}</option>
                                 {% endfor %}
                              
                             </select>
                         </div>
                         <div>
-                            <input type="text" name="city" placeholder="City">
+                            <input type="text" name="city" placeholder="City"value="{{ values.city }}">
                         </div>
                        
                         <div>
                             <select name="bedrooms" class="nice-select">
                                 <option selected="true" disabled="disabled" >Bedrooms</option>
                                 {% for key,value in bedroom_choices.items %}
-                                <option value="{{key}}">{{value}}</option>
+                                <option
+                                {% if key == values.bedrooms %}
+                                selected
+                                {% endif %}
+                                 value="{{key}}">{{value}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -53,7 +61,11 @@
                             <select name="bathrooms" class="nice-select">
                                 <option selected="true" disabled="disabled" >Bathrooms</option>
                                 {% for key,value in bathroom_choices.items %}
-                                <option value="{{key}}">{{value}}</option>
+                                <option
+                                {% if key == values.bathrooms %}
+                                selected
+                                {% endif %}
+                                 value="{{key}}">{{value}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -62,7 +74,11 @@
                             <select name="price" id="type" class="nice-select">
                                 <option selected="true" disabled="disabled">Max Price</option>
                                 {% for key,value in price_choices.items %}
-                                <option value="{{key}}">{{value}}</option>
+                                <option
+                                {% if key == values.price %}
+                                selected
+                                {% endif %}
+                                 value="{{key}}">{{value}}</option>
                                 {% endfor %}
                             </select>
                         </div>

@@ -157,6 +157,7 @@ def search(request):
     'price_choices':price_choices,
     'state_choices':state_choices,
     'type_choices':type_choices,
-    'listings':queryset_list
+    'listings':queryset_list,
+    'values': request.GET
     }
     return render(request,'search.html',context)
