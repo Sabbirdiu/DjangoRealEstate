@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
@@ -37,30 +38,16 @@
                     
                     <div class="tab-content">
                         <div id="profile-tab" class="tab-pane show active">
-                            <form  action="" method="post" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
-                               
-                                <div class="row">
-                                    <div class="col-12 mb-30"><h3 class="mb-0">Personal Profile</h3></div>
-                                    <div class="col-md-6 col-12 mb-30"><label for="f_name">First Name</label><input type="text"  value="{{user.first_name}}" name="first_name" id="f_name" value="Donald"></div>
-                                    <div class="col-md-6 col-12 mb-30"><label for="l_name">Last Name</label><input type="text"  value="{{user.last_name}}" name="last_name" id="l_name" value="Palmer"></div>
-                                  
-
-                                    <div class="col-12">
-                                        <div class="row">
-                                           
-                                            <div class="col-md-6 col-12 mb-30"><label for="personal_email">Email</label><input name="email" type="text"  value="{{user.email}}" id="personal_email" value="info@example.com"></div>
-                                          
-                                          
-                                        </div>
-                                      
-                                    </div>
-
-
-                                    <div class="col-12 mb-30"><button class="btn">Save Change</button></div>
+                                <fieldset class="form-group">
+                                  <legend class="border-bottom mb-4">Profile Info</legend>
+                                  {{ u_form|crispy }} {{ p_form|crispy }}
+                                </fieldset>
+                                <div class="form-group">
+                                  <button class="btn btn-outline-info" type="submit">Update</button>
                                 </div>
-                            </form> 
-                            
+                              </form>
                         </div>
                        
                         <div id="password-tab" class="tab-pane">
