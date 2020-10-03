@@ -25,14 +25,7 @@
         <div class="container">
             <div class="row row-25">
                
-                <div class="col-lg-4 col-12 mb-sm-50 mb-xs-50">
-                    <ul class="myaccount-tab-list nav">
-                        <li><a class="active" href="#profile-tab" data-toggle="tab"><i class="pe-7s-user"></i>My Profile</a></li>
-                      
-                        <li><a href="#password-tab" data-toggle="tab"><i class="pe-7s-lock"></i>Change Password</a></li>
-                        <li><a href="login-register.html"><i class="pe-7s-power"></i>Log Out</a></li>
-                    </ul>
-                </div>
+                {% include 'account_partial.html' %}
                 
                 <div class="col-lg-8 col-12">
                     
@@ -51,7 +44,7 @@
                         </div>
                        
                         <div id="password-tab" class="tab-pane">
-                            <form action="#">
+                            <!-- <form action="#">
                                
                                 <div class="row">
                                     <div class="col-12 mb-30"><h3 class="mb-0">Change Password</h3></div>
@@ -61,7 +54,8 @@
 
                                     <div class="col-12 mb-30"><button class="btn">Save Change</button></div>
                                 </div>
-                            </form>
+                            </form> -->
+                            
                         </div>
                     </div>
                     

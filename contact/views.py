@@ -104,14 +104,13 @@ def login(request):
     if user is not None:
       auth.login(request, user)
       messages.success(request, 'You are now logged in')
-      return redirect('dashboard')
+      return redirect('account')
     else:
       messages.error(request, 'Invalid credentials')
       return redirect('login')
   else:
     return render(request, 'login.html') 
-def dashboard(request):
-    return render(request,'dashboard.html')      
+   
     
 def logout(request):
     if request.method == 'POST':

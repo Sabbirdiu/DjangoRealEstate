@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="col-lg-4 col-12 mb-sm-50 mb-xs-50">
+    <ul class="myaccount-tab-list nav">
+        <li 
+        {% if 'account' in request.path %}
+        class="nav-item active"
+        {% else %}
+        class="nav-item "
+        {% endif %}
+        ><a class="" href="{% url 'account' %}"><i class="pe-7s-user"></i>My Profile</a></li>
+      
+        <li
+        {% if 'password_change' in request.path %}
+        class="nav-item active"
+        {% else %}
+        class="nav-item "
+        {% endif %}
+        ><a href="{% url 'password_change' %}" ><i class="pe-7s-lock"></i>Change Password</a></li>
+      
+    </ul>
+</div>
