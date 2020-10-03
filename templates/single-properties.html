@@ -54,7 +54,7 @@
                                 <div class="head">
                                     <div class="left">
                                         <h1 class="title">{{listing.title}}</h1>
-                                        <span class="location"><img src="assets/images/icons/marker.png" alt="">568 E 1st Ave, Miami</span>
+                                        <span class="location"><img src="{% static 'images/icons/marker.png' %}" alt="">568 E 1st Ave, Miami</span>
                                     </div>
                                     <div class="right">
                                         <div class="type-wrap">
@@ -65,7 +65,7 @@
                                 </div>
                                 
                                 <div class="image mb-30">
-                                    <img src="{{ listing.photo_main.url }}" alt="">
+                                    <img style="height: 450px; ;" src="{{ listing.photo_main.url }}" alt="">
                                 </div>
                                 
                                 <div class="content">
