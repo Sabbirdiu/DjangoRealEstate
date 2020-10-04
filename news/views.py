@@ -14,15 +14,6 @@ def post(request):
     }
     return render(request,'news.html',context)
 
-# def newsdetails(request,slug):
-#     post_detail = get_object_or_404(Post, slug=slug)
-  
-#     context = {
-#         'obj': post_detail,
-        
-#     }
-
-#     return render(request, 'news-details.html', context) 
 
 def newsdetails(request,slug):
     # get post object
@@ -70,13 +61,3 @@ def newsdetails(request,slug):
                    'posts':posts,
                   
                    'comment_form': comment_form})
-# def tagged(request, slug):
-#     tag = get_object_or_404(Tag, slug=slug) 
-#     common_tags = Post.tags.most_common()[:4]
-#     posts = Post.objects.filter(tags=tag)
-#     context = {
-#         'tag':tag,
-#         'common_tags':common_tags,
-#         'posts':posts,
-#     }
-#     return render(request, 'news_tag.html', context)                   
