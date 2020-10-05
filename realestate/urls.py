@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path,include
 
 from contact.views import *
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -39,6 +40,8 @@ urlpatterns = [
 
     # api
     path('api/',include('home.api.urls')),
+    path('api/news/',include('news.api.urls')),
+    
 
   
 
