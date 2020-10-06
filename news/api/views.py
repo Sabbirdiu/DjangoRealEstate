@@ -12,11 +12,7 @@ class NewsView(ListAPIView):
     # permission_classes = (permissions.AllowAny, )
     serializer_class = NewsSerializer
     lookup_field = 'slug'
-# class ListingsView(ListAPIView):
-#     queryset = Listing.objects.order_by('-list_date').filter(is_published=True)
-#     # permission_classes = (permissions.AllowAny, )
-#     serializer_class = ListingSerializer
-#     lookup_field = 'slug'
+   
 class NewsDetailsView(RetrieveAPIView):
     queryset = Post.objects.order_by('-timestamp')
     serializer_class = NewsDetailSerializer
