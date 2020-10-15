@@ -14,9 +14,8 @@ urlpatterns = [
     path('news/',include('news.urls')),
     path('contact/',include('contact.urls')),
 
-    path('about/',about,name='about'),
-
-    
+#    local
+    path('about/',about,name='about'), 
     path('register/',register,name='register'),
     path('login/',login,name='login'),
     path('logout/',logout,name='logout'),

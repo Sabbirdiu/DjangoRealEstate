@@ -48,14 +48,7 @@ def contact(request):
 
     contact.save()
 
-    # Send email
-    # send_mail(
-    #   'Property Listing Inquiry',
-    #   'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
-    #   'traversy.brad@gmail.com',
-    #   [realtor_email, 'techguyinfo@gmail.com'],
-    #   fail_silently=False
-    # )
+ 
 
     messages.success(request, 'Your reqmessage  has been submitted')
     return redirect('contact')

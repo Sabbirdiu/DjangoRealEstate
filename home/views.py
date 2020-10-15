@@ -34,7 +34,7 @@ def index(request):
 
 def listing(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
-    paginator = Paginator(listings, 1)
+    paginator = Paginator(listings, 3)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
     featured = Listing.objects.filter(featured=True).order_by('-list_date')[0:3]
@@ -101,7 +101,7 @@ def listingdetail(request, slug):
     return render(request, 'single-properties.html', context)    
 def agents(request):
     realtor = Realtor.objects.order_by('-hire_date')
-    paginator = Paginator(realtor, 1)
+    paginator = Paginator(realtor, 4)
     page = request.GET.get('page')
     realtors = paginator.get_page(page)
     context = {
@@ -139,11 +139,7 @@ def search(request):
         bathrooms = request.GET['bathrooms']
         if bathrooms:
            queryset_list = queryset_list.filter(bathrooms__lte=bathrooms)      
-    # # Types
-    # if 'types' in request.GET:
-    #     types = request.GET['types']
-    #     if types:
-    #        queryset_list = queryset_list.filter(type__iexact=types)                                
+                                 
   # Price
     if 'price' in request.GET:
         price = request.GET['price']
